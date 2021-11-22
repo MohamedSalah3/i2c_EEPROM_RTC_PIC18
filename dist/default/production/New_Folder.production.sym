@@ -1,0 +1,28 @@
+__S0 400 0 ABS 0
+__S1 0 0 ABS 0
+__S3 0 0 ABS 0
+_bar 3FE 0 CODE 0
+__Hcode 0 0 ABS 0
+__Lcode 0 0 ABS 0
+__Hdata 0 0 ABS 0
+__Ldata 0 0 ABS 0
+__Hudata_bank0 0 0 ABS 0
+__Ludata_bank0 0 0 ABS 0
+__Hedata 0 0 ABS 0
+__Ledata 0 0 ABS 0
+__Hudata 0 0 ABS 0
+__Ludata 0 0 ABS 0
+__Hspace_0 400 0 ABS 0
+__Lspace_0 0 0 ABS 0
+__Hspace_1 0 0 ABS 0
+__Lspace_1 0 0 ABS 0
+__Hspace_3 0 0 ABS 0
+__Lspace_3 0 0 ABS 0
+%segments
+barfunc 7FC 7FF CODE 7FC 0
+%locals
+build/default/production/newpic_8b_asm_func.o
+newpic_8b_asm_func.s
+19 3FE 0 CODE 0
+20 3FE 0 CODE 0
+21 3FF 0 CODE 0
