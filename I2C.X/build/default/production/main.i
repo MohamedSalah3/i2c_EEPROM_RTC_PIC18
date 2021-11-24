@@ -9204,7 +9204,10 @@ ERROR_STATUS nvm_Read(uint8_t *u8_data,uint16_t u16_address);
 # 10 "main.c" 2
 
 void main(void) {
+    uint8_t data_read_eeprom = 0;
     nvm_Write('M',0x7f00);
+    nvm_Read(data_read_eeprom,0x7f00);
+        nvm_Write(data_read_eeprom,0x7f21);
     while (1){
 
     }

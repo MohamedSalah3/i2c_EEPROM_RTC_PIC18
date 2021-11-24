@@ -3,6 +3,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16 ./nvm.h
 [; ;./nvm.h: 16: ERROR_STATUS nvm_Write(uint8_t u8_data,uint16_t u16_address);
 [v _nvm_Write `(uc ~T0 @X0 0 ef2`uc`ui ]
+"18
+[; ;./nvm.h: 18: ERROR_STATUS nvm_Read(uint8_t *u8_data,uint16_t u16_address);
+[v _nvm_Read `(uc ~T0 @X0 0 ef2`*uc`ui ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -743,22 +746,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "12
-[; ;main.c: 12:     nvm_Write('M',0x7f00);
-[e ( _nvm_Write (2 , -> -> 77 `ui `uc -> -> 32512 `i `ui ]
+[; ;main.c: 12:     uint8_t data_read_eeprom = 0;
+[v _data_read_eeprom `uc ~T0 @X0 1 a ]
+[e = _data_read_eeprom -> -> 0 `i `uc ]
 "13
-[; ;main.c: 13:     while (1){
+[; ;main.c: 13:     nvm_Write('M',0x7f00);
+[e ( _nvm_Write (2 , -> -> 77 `ui `uc -> -> 32512 `i `ui ]
+"14
+[; ;main.c: 14:     nvm_Read(data_read_eeprom,0x7f00);
+[e ( _nvm_Read (2 , -> _data_read_eeprom `*uc -> -> 32512 `i `ui ]
+"15
+[; ;main.c: 15:         nvm_Write(data_read_eeprom,0x7f21);
+[e ( _nvm_Write (2 , _data_read_eeprom -> -> 32545 `i `ui ]
+"16
+[; ;main.c: 16:     while (1){
 [e :U 829 ]
 {
-"15
-[; ;main.c: 15:     }
+"18
+[; ;main.c: 18:     }
 }
 [e :U 828 ]
 [e $U 829  ]
 [e :U 830 ]
-"16
-[; ;main.c: 16:     return;
+"19
+[; ;main.c: 19:     return;
 [e $UE 827  ]
-"17
-[; ;main.c: 17: }
+"20
+[; ;main.c: 20: }
 [e :UE 827 ]
 }

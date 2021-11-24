@@ -57,6 +57,8 @@
 [v _main main `(v  1 e 1 0 ]
 "3 E:\Talha\New Folder\I2C.X\nvm.c
 [v _nvm_Write nvm_Write `(uc  1 e 1 0 ]
+"11
+[v _nvm_Read nvm_Read `(uc  1 e 1 0 ]
 "6174 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "7580
@@ -87,7 +89,7 @@
 "11 E:\Talha\New Folder\I2C.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"17
+"20
 } 0
 "3 E:\Talha\New Folder\I2C.X\nvm.c
 [v _nvm_Write nvm_Write `(uc  1 e 1 0 ]
@@ -134,6 +136,32 @@
 [v EEPROM_Write@add add `ui  1 p 2 2 ]
 [v EEPROM_Write@data data `uc  1 p 1 4 ]
 "85
+} 0
+"11 E:\Talha\New Folder\I2C.X\nvm.c
+[v _nvm_Read nvm_Read `(uc  1 e 1 0 ]
+{
+[v nvm_Read@u8_data u8_data `*.39uc  1 p 2 5 ]
+[v nvm_Read@u16_address u16_address `ui  1 p 2 7 ]
+"16
+} 0
+"102 E:\Talha\New Folder\I2C.X\i2c_EEPROM.c
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+{
+"104
+[v EEPROM_Read@Data Data `uc  1 a 1 4 ]
+"102
+[v EEPROM_Read@add add `ui  1 p 2 2 ]
+"117
+} 0
+"47
+[v _I2C_Read_Byte I2C_Read_Byte `(uc  1 e 1 0 ]
+{
+"56
+} 0
+"63
+[v _I2C_NACK I2C_NACK `(v  1 e 1 0 ]
+{
+"68
 } 0
 "39
 [v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]

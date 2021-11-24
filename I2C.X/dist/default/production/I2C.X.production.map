@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\I2C.X.production.sym \
   --cmf=dist/default/production\I2C.X.production.cmf -z -Q18F23K22 \
-  -oC:\Users\Dell\AppData\Local\Temp\siik.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\Dell\AppData\Local\Temp\seq8.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/I2C.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=060h-01FFh -pstack=STACK -ACODE=00h-01FFFh \
   -ACONST=00h-01FFFh -ASMALLCONST=0200h-02FFhx30 -AMEDIUMCONST=0200h-01FFFh \
@@ -20,7 +20,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Dell\AppData\Local\Temp\siik.o \
+  C:\Users\Dell\AppData\Local\Temp\seq8.o \
   dist/default/production\I2C.X.production.o 
 
 Object code version is 3.11
@@ -30,49 +30,57 @@ Machine type is 18F23K22
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Dell\AppData\Local\Temp\siik.o
+C:\Users\Dell\AppData\Local\Temp\seq8.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                  0        0        4        0       0
 dist/default/production\I2C.X.production.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
-                text10                             1BAC     1BAC       26      DD6       0
-                text9                              1B46     1B46        8      DA3       0
-                text8                              1B4E     1B4E        8      DA7       0
-                text7                              1B56     1B56        8      DAB       0
-                text6                              1B88     1B88       24      DC4       0
-                text5                              1BFA     1BFA       36      DFD       0
+                text14                             1B44     1B44       26      DA2       0
+                text13                             1AB4     1AB4        8      D5A       0
+                text12                             1ABC     1ABC        8      D5E       0
+                text11                             1AC4     1AC4        8      D62       0
+                text10                             1B20     1B20       24      D90       0
+                text9                              1ACC     1ACC        A      D66       0
+                text8                              1B02     1B02       1E      D81       0
+                text7                              1B92     1B92       30      DC9       0
+                text6                              1AEA     1AEA       18      D75       0
+                text5                              1BC2     1BC2       36      DE1       0
                 text4                              1D6E     1D6E      292      EB7       0
                 text3                              1CCA     1CCA       A4      E65       0
                 text2                              1C66     1C66       64      E33       0
-                text1                              1BD2     1BD2       28      DE9       0
-                text0                              1B72     1B72       16      DB9       0
+                text1                              1B6A     1B6A       28      DB5       0
+                text0                              1C2E     1C2E       38      E17       0
                 cstackCOMRAM                          1        1       19        1       1
                 dataCOMRAM                           1A       1A       14        1       1
                 bssCOMRAM                            2E       2E        6        1       1
-                cinit                              1C30     1C30       36      E18       0
+                cinit                              1BF8     1BF8       36      DFC       0
                 nvCOMRAM                             34       34        1        1       1
-                idataCOMRAM                        1B5E     1B5E       14     1B5E       0
+                idataCOMRAM                        1AD6     1AD6       14     1AD6       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text10                             1BAC     1BAC       26         0
-                text9                              1B46     1B46        8         0
-                text8                              1B4E     1B4E        8         0
-                text7                              1B56     1B56        8         0
-                text6                              1B88     1B88       24         0
-                text5                              1BFA     1BFA       36         0
+                text14                             1B44     1B44       26         0
+                text13                             1AB4     1AB4        8         0
+                text12                             1ABC     1ABC        8         0
+                text11                             1AC4     1AC4        8         0
+                text10                             1B20     1B20       24         0
+                text9                              1ACC     1ACC        A         0
+                text8                              1B02     1B02       1E         0
+                text7                              1B92     1B92       30         0
+                text6                              1AEA     1AEA       18         0
+                text5                              1BC2     1BC2       36         0
                 text4                              1D6E     1D6E      292         0
                 text3                              1CCA     1CCA       A4         0
                 text2                              1C66     1C66       64         0
-                text1                              1BD2     1BD2       28         0
-                text0                              1B72     1B72       16         0
-                cinit                              1C30     1C30       36         0
-                idataCOMRAM                        1B5E     1B5E       14         0
+                text1                              1B6A     1B6A       28         0
+                text0                              1C2E     1C2E       38         0
+                cinit                              1BF8     1BF8       36         0
+                idataCOMRAM                        1AD6     1AD6       14         0
 
         CLASS   CONST          
 
@@ -114,16 +122,20 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  000034  000035         1       1  COMRAM  
-                text9                          001B46  000008  001B4E       DA3       0  CODE    
-                text8                          001B4E  000008  001B56       DA7       0  CODE    
-                text7                          001B56  000008  001B5E       DAB       0  CODE    
-                idataCOMRAM                    001B5E  000014  001B72      1B5E       0  CODE    
-                text0                          001B72  000016  001B88       DB9       0  CODE    
-                text6                          001B88  000024  001BAC       DC4       0  CODE    
-                text10                         001BAC  000026  001BD2       DD6       0  CODE    
-                text1                          001BD2  000028  001BFA       DE9       0  CODE    
-                text5                          001BFA  000036  001C30       DFD       0  CODE    
-                cinit                          001C30  000036  001C66       E18       0  CODE    
+                text13                         001AB4  000008  001ABC       D5A       0  CODE    
+                text12                         001ABC  000008  001AC4       D5E       0  CODE    
+                text11                         001AC4  000008  001ACC       D62       0  CODE    
+                text9                          001ACC  00000A  001AD6       D66       0  CODE    
+                idataCOMRAM                    001AD6  000014  001AEA      1AD6       0  CODE    
+                text6                          001AEA  000018  001B02       D75       0  CODE    
+                text8                          001B02  00001E  001B20       D81       0  CODE    
+                text10                         001B20  000024  001B44       D90       0  CODE    
+                text14                         001B44  000026  001B6A       DA2       0  CODE    
+                text1                          001B6A  000028  001B92       DB5       0  CODE    
+                text7                          001B92  000030  001BC2       DC9       0  CODE    
+                text5                          001BC2  000036  001BF8       DE1       0  CODE    
+                cinit                          001BF8  000036  001C2E       DFC       0  CODE    
+                text0                          001C2E  000038  001C66       E17       0  CODE    
                 text2                          001C66  000064  001CCA       E33       0  CODE    
                 text3                          001CCA  0000A4  001D6E       E65       0  CODE    
                 text4                          001D6E  000292  002000       EB7       0  CODE    
@@ -135,14 +147,14 @@ UNUSED ADDRESS RANGES
         BANK0            000060-0000FF               A0
         BANK1            000100-0001FF              100
         BIGRAM           000035-0001FF              1CB
-        CODE             000004-001B45             1B42
+        CODE             000004-001AB3             1AB0
         COMRAM           000035-00005F               2B
-        CONST            000004-001B45             1B42
+        CONST            000004-001AB3             1AB0
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000200-001B45             1946
+        MEDIUMCONST      000200-001AB3             18B4
         RAM              000060-0001FF               A0
         SFR              000F38-000FFF               28
-        SMALLCONST       000200-001B45              100
+        SMALLCONST       000200-001AB3              100
         STACK            000060-0001FF              1A0
 
                                   Symbol Table
@@ -152,6 +164,8 @@ DIO_Write@first_powerup            bssCOMRAM    000032
 DIO_init@DIO_info                  cstackCOMRAM 000001
 DIO_init@first_powerup_init        bssCOMRAM    000033
 DIO_init@ret_error                 cstackCOMRAM 000005
+EEPROM_Read@Data                   cstackCOMRAM 000005
+EEPROM_Read@add                    cstackCOMRAM 000003
 EEPROM_Write@add                   cstackCOMRAM 000003
 EEPROM_Write@data                  cstackCOMRAM 000005
 I2C_Master_Init@baud               cstackCOMRAM 00000E
@@ -164,13 +178,16 @@ _Dio_configutation_B               dataCOMRAM   00001E
 _Dio_configutation_C               dataCOMRAM   00002A
 _Dio_configutation_D               dataCOMRAM   00001A
 _Dio_configutation_E               bssCOMRAM    00002E
-_EEPROM_Write                      text5        001BFA
+_EEPROM_Read                       text7        001B92
+_EEPROM_Write                      text5        001BC2
 _I2C_Master_Init                   text2        001C66
-_I2C_Master_RepeatedStart          text9        001B46
-_I2C_Master_Start                  text8        001B4E
-_I2C_Master_Stop                   text7        001B56
-_I2C_Master_Wait                   text10       001BAC
-_I2C_Master_Write                  text6        001B88
+_I2C_Master_RepeatedStart          text13       001AB4
+_I2C_Master_Start                  text12       001ABC
+_I2C_Master_Stop                   text11       001AC4
+_I2C_Master_Wait                   text14       001B44
+_I2C_Master_Write                  text10       001B20
+_I2C_NACK                          text9        001ACC
+_I2C_Read_Byte                     text8        001B02
 _PORTA                             (abs)        000F80
 _RCEN1                             (abs)        007E2B
 _SSP1ADD                           (abs)        000FC8
@@ -241,6 +258,10 @@ __Htext                            text         000000
 __Htext0                           text0        000000
 __Htext1                           text1        000000
 __Htext10                          text10       000000
+__Htext11                          text11       000000
+__Htext12                          text12       000000
+__Htext13                          text13       000000
+__Htext14                          text14       000000
 __Htext2                           text2        000000
 __Htext3                           text3        000000
 __Htext4                           text4        000000
@@ -309,6 +330,10 @@ __Ltext                            text         000000
 __Ltext0                           text0        000000
 __Ltext1                           text1        000000
 __Ltext10                          text10       000000
+__Ltext11                          text11       000000
+__Ltext12                          text12       000000
+__Ltext13                          text13       000000
+__Ltext14                          text14       000000
 __Ltext2                           text2        000000
 __Ltext3                           text3        000000
 __Ltext4                           text4        000000
@@ -335,38 +360,47 @@ ___sp                              stack        000000
 __accesstop                        (abs)        000060
 __activetblptr                     (abs)        000002
 __end_of_DIO_init                  text4        002000
-__end_of_EEPROM_Write              text5        001C30
+__end_of_EEPROM_Read               text7        001BC2
+__end_of_EEPROM_Write              text5        001BF8
 __end_of_I2C_Master_Init           text2        001CCA
-__end_of_I2C_Master_RepeatedStart  text9        001B4E
-__end_of_I2C_Master_Start          text8        001B56
-__end_of_I2C_Master_Stop           text7        001B5E
-__end_of_I2C_Master_Wait           text10       001BD2
-__end_of_I2C_Master_Write          text6        001BAC
+__end_of_I2C_Master_RepeatedStart  text13       001ABC
+__end_of_I2C_Master_Start          text12       001AC4
+__end_of_I2C_Master_Stop           text11       001ACC
+__end_of_I2C_Master_Wait           text14       001B6A
+__end_of_I2C_Master_Write          text10       001B44
+__end_of_I2C_NACK                  text9        001AD6
+__end_of_I2C_Read_Byte             text8        001B20
 __end_of___lldiv                   text3        001D6E
-__end_of__initialization           cinit        001C5C
-__end_of_main                      text0        001B88
-__end_of_nvm_Write                 text1        001BFA
-__initialization                   cinit        001C30
+__end_of__initialization           cinit        001C24
+__end_of_main                      text0        001C66
+__end_of_nvm_Read                  text6        001B02
+__end_of_nvm_Write                 text1        001B92
+__initialization                   cinit        001BF8
 __mediumconst                      mediumconst  000000
 __pbssCOMRAM                       bssCOMRAM    00002E
-__pcinit                           cinit        001C30
+__pcinit                           cinit        001BF8
 __pcstackCOMRAM                    cstackCOMRAM 000001
 __pdataCOMRAM                      dataCOMRAM   00001A
-__pidataCOMRAM                     idataCOMRAM  001B5E
+__pidataCOMRAM                     idataCOMRAM  001AD6
 __pnvCOMRAM                        nvCOMRAM     000034
-__ptext0                           text0        001B72
-__ptext1                           text1        001BD2
-__ptext10                          text10       001BAC
+__ptext0                           text0        001C2E
+__ptext1                           text1        001B6A
+__ptext10                          text10       001B20
+__ptext11                          text11       001AC4
+__ptext12                          text12       001ABC
+__ptext13                          text13       001AB4
+__ptext14                          text14       001B44
 __ptext2                           text2        001C66
 __ptext3                           text3        001CCA
 __ptext4                           text4        001D6E
-__ptext5                           text5        001BFA
-__ptext6                           text6        001B88
-__ptext7                           text7        001B56
-__ptext8                           text8        001B4E
-__ptext9                           text9        001B46
+__ptext5                           text5        001BC2
+__ptext6                           text6        001AEA
+__ptext7                           text7        001B92
+__ptext8                           text8        001B02
+__ptext9                           text9        001ACC
 __ramtop                           ramtop       000200
 __size_of_DIO_init                 (abs)        000000
+__size_of_EEPROM_Read              (abs)        000000
 __size_of_EEPROM_Write             (abs)        000000
 __size_of_I2C_Master_Init          (abs)        000000
 __size_of_I2C_Master_RepeatedStart (abs)        000000
@@ -374,24 +408,30 @@ __size_of_I2C_Master_Start         (abs)        000000
 __size_of_I2C_Master_Stop          (abs)        000000
 __size_of_I2C_Master_Wait          (abs)        000000
 __size_of_I2C_Master_Write         (abs)        000000
+__size_of_I2C_NACK                 (abs)        000000
+__size_of_I2C_Read_Byte            (abs)        000000
 __size_of___lldiv                  (abs)        000000
 __size_of_main                     (abs)        000000
+__size_of_nvm_Read                 (abs)        000000
 __size_of_nvm_Write                (abs)        000000
 __smallconst                       smallconst   000000
 _is_init                           nvCOMRAM     000034
-_main                              text0        001B72
-_nvm_Write                         text1        001BD2
-end_of_initialization              cinit        001C5C
+_main                              text0        001C2E
+_nvm_Read                          text6        001AEA
+_nvm_Write                         text1        001B6A
+end_of_initialization              cinit        001C24
 intlevel0                          text         000000
 intlevel1                          text         000000
 intlevel2                          text         000000
 intlevel3                          text         000000
+nvm_Read@u16_address               cstackCOMRAM 000008
+nvm_Read@u8_data                   cstackCOMRAM 000006
 nvm_Write@u16_address              cstackCOMRAM 000016
 nvm_Write@u8_data                  cstackCOMRAM 000019
 stackhi                            (abs)        0001FF
 stacklo                            (abs)        000060
 start                              init         000000
-start_initialization               cinit        001C30
+start_initialization               cinit        001BF8
 
 
 FUNCTION INFORMATION:
@@ -402,7 +442,7 @@ FUNCTION INFORMATION:
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-		None
+  data_read_ee    1    0        unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -413,12 +453,13 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1
       Params:         0       0       0
-      Locals:         0       0       0
+      Locals:         1       0       0
       Temps:          0       0       0
-      Totals:         0       0       0
-Total ram usage:        0 bytes
+      Totals:         1       0       0
+Total ram usage:        1 bytes
  Hardware stack levels required when called:    4
  This function calls:
+		_nvm_Read
 		_nvm_Write
  This function is called by:
 		Startup code after reset
@@ -584,6 +625,134 @@ Total ram usage:        3 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _nvm_Read *****************
+ Defined at:
+		line 11 in file "nvm.c"
+ Parameters:    Size  Location     Type
+  u8_data         2    5[COMRAM] PTR unsigned char 
+		 -> RAM(511), 
+  u16_address     2    7[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  ret_error       1    0        unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1
+      Params:         4       0       0
+      Locals:         1       0       0
+      Temps:          0       0       0
+      Totals:         5       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_EEPROM_Read
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _EEPROM_Read *****************
+ Defined at:
+		line 102 in file "i2c_EEPROM.c"
+ Parameters:    Size  Location     Type
+  add             2    2[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  Data            1    4[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1
+      Params:         2       0       0
+      Locals:         1       0       0
+      Temps:          0       0       0
+      Totals:         3       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_I2C_Master_RepeatedStart
+		_I2C_Master_Start
+		_I2C_Master_Stop
+		_I2C_Master_Write
+		_I2C_NACK
+		_I2C_Read_Byte
+ This function is called by:
+		_nvm_Read
+ This function uses a non-reentrant model
+
+
+ *************** function _I2C_Read_Byte *****************
+ Defined at:
+		line 47 in file "i2c_EEPROM.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1
+      Params:         0       0       0
+      Locals:         0       0       0
+      Temps:          0       0       0
+      Totals:         0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_I2C_Master_Wait
+ This function is called by:
+		_EEPROM_Read
+		_EEPROM_Read_Page
+ This function uses a non-reentrant model
+
+
+ *************** function _I2C_NACK *****************
+ Defined at:
+		line 63 in file "i2c_EEPROM.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1
+      Params:         0       0       0
+      Locals:         0       0       0
+      Temps:          0       0       0
+      Totals:         0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		_I2C_Master_Wait
+ This function is called by:
+		_EEPROM_Read
+ This function uses a non-reentrant model
+
+
  *************** function _I2C_Master_Write *****************
  Defined at:
 		line 39 in file "i2c_EEPROM.c"
@@ -611,8 +780,8 @@ Total ram usage:        1 bytes
 		_I2C_Master_Wait
  This function is called by:
 		_EEPROM_Write
-		_EEPROM_Write_Page
 		_EEPROM_Read
+		_EEPROM_Write_Page
 		_EEPROM_Read_Page
  This function uses a non-reentrant model
 
@@ -644,8 +813,8 @@ Total ram usage:        0 bytes
 		_I2C_Master_Wait
  This function is called by:
 		_EEPROM_Write
-		_EEPROM_Write_Page
 		_EEPROM_Read
+		_EEPROM_Write_Page
 		_EEPROM_Read_Page
  This function uses a non-reentrant model
 
@@ -677,8 +846,8 @@ Total ram usage:        0 bytes
 		_I2C_Master_Wait
  This function is called by:
 		_EEPROM_Write
-		_EEPROM_Write_Page
 		_EEPROM_Read
+		_EEPROM_Write_Page
 		_EEPROM_Read_Page
  This function uses a non-reentrant model
 
@@ -710,8 +879,8 @@ Total ram usage:        0 bytes
 		_I2C_Master_Wait
  This function is called by:
 		_EEPROM_Write
-		_EEPROM_Write_Page
 		_EEPROM_Read
+		_EEPROM_Write_Page
 		_EEPROM_Read_Page
  This function uses a non-reentrant model
 
@@ -746,8 +915,8 @@ Total ram usage:        1 bytes
 		_I2C_Master_Stop
 		_I2C_Master_Write
 		_I2C_Read_Byte
-		_I2C_ACK
 		_I2C_NACK
+		_I2C_ACK
  This function uses a non-reentrant model
 
 
@@ -756,20 +925,24 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 nvm.c
-		_nvm_Write     		CODE           	1BD2	0000	40
+		_nvm_Write     		CODE           	1B6A	0000	40
+		_nvm_Read      		CODE           	1AEA	0000	24
 
-nvm.c estimated size: 40
+nvm.c estimated size: 64
 
 i2c_EEPROM.c
-		_I2C_Master_Wait		CODE           	1BAC	0000	38
-		_EEPROM_Write  		CODE           	1BFA	0000	54
+		_EEPROM_Read   		CODE           	1B92	0000	48
+		_I2C_Master_Wait		CODE           	1B44	0000	38
+		_EEPROM_Write  		CODE           	1BC2	0000	54
 		_I2C_Master_Init		CODE           	1C66	0000	100
-		_I2C_Master_Stop		CODE           	1B56	0000	8
-		_I2C_Master_RepeatedStart		CODE           	1B46	0000	8
-		_I2C_Master_Write		CODE           	1B88	0000	36
-		_I2C_Master_Start		CODE           	1B4E	0000	8
+		_I2C_Master_Stop		CODE           	1AC4	0000	8
+		_I2C_Master_RepeatedStart		CODE           	1AB4	0000	8
+		_I2C_Read_Byte 		CODE           	1B02	0000	30
+		_I2C_Master_Write		CODE           	1B20	0000	36
+		_I2C_NACK      		CODE           	1ACC	0000	10
+		_I2C_Master_Start		CODE           	1ABC	0000	8
 
-i2c_EEPROM.c estimated size: 252
+i2c_EEPROM.c estimated size: 340
 
 DIO.c
 		_DIO_init      		CODE           	1D6E	0000	658
@@ -777,14 +950,14 @@ DIO.c
 DIO.c estimated size: 658
 
 shared
-		__initialization		CODE           	1C30	0000	44
+		__initialization		CODE           	1BF8	0000	44
 
 shared estimated size: 44
 
 main.c
-		_main          		CODE           	1B72	0000	22
+		_main          		CODE           	1C2E	0000	56
 
-main.c estimated size: 22
+main.c estimated size: 56
 
 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\__lldiv.c
 		___lldiv       		CODE           	1CCA	0000	164
