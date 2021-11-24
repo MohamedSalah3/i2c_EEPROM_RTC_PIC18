@@ -9126,6 +9126,47 @@ typedef volatile uint16_t* const reg_type16_t;
 # 11 "./registers.h" 2
 # 10 "./i2c_EEPROM.h" 2
 
+# 1 "./DIO.h" 1
+# 12 "./DIO.h"
+# 1 "./DIO_Config.h" 1
+# 18 "./DIO_Config.h"
+# 1 "./error.h" 1
+# 12 "./error.h"
+typedef uint8_t ERROR_STATUS;
+# 18 "./DIO_Config.h" 2
+# 64 "./DIO_Config.h"
+typedef struct DIO_Cfg_s{
+    uint8_t port;
+    uint8_t pin;
+    uint8_t dir;
+    uint8_t operation_mode;
+
+}DIO_Cfg_s;
+
+
+extern DIO_Cfg_s Dio_configutation_A;
+extern DIO_Cfg_s Dio_configutation_A_7_seg;
+extern DIO_Cfg_s Dio_configutation_A_ADC ;
+extern DIO_Cfg_s Dio_configutation_B;
+extern DIO_Cfg_s Dio_configutation_C;
+extern DIO_Cfg_s Dio_configutation_D;
+extern DIO_Cfg_s Dio_configutation_E;
+# 12 "./DIO.h" 2
+# 21 "./DIO.h"
+ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
+# 50 "./DIO.h"
+ERROR_STATUS DIO_Write (uint8_t GPIO, uint8_t pins, uint8_t value);
+# 78 "./DIO.h"
+ERROR_STATUS DIO_Read (uint8_t GPIO,uint8_t pins, uint8_t *data);
+# 103 "./DIO.h"
+ERROR_STATUS DIO_Toggle (uint8_t GPIO, uint8_t pins);
+# 11 "./i2c_EEPROM.h" 2
+
+
+
+
+
+
 
 
 void I2C_Master_Init(const unsigned long baud);
@@ -9150,14 +9191,15 @@ void EEPROM_Read_Page(unsigned int add, unsigned char* data, unsigned int len);
 
 
 
+
 void I2C_Master_Init(const unsigned long baud)
 {
   SSP1CON1 = 0b00101000;
   SSP1CON2 = 0;
-  SSP1ADD = (unsigned char)(8000000/(4*baud))-1;
+  SSP1ADD = (unsigned char)(16000000/(4*baud))-1;
   SSP1STAT = 0;
-  TRISC |= 3 ;
-  TRISC |= 4 ;
+ DIO_init (&Dio_configutation_C);
+
 }
 void I2C_Master_Wait()
 {

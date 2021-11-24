@@ -1,0 +1,133 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F23K22 ]
+[d frameptr 4065 ]
+"7 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"11 E:\Talha\New Folder\I2C.X\DIO.c
+[v _DIO_init DIO_init `(uc  1 e 1 0 ]
+"10 E:\Talha\New Folder\I2C.X\i2c_EEPROM.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+"19
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+"23
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+"28
+[v _I2C_Master_RepeatedStart I2C_Master_RepeatedStart `(v  1 e 1 0 ]
+"33
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+"39
+[v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
+"47
+[v _I2C_Read_Byte I2C_Read_Byte `(uc  1 e 1 0 ]
+"57
+[v _I2C_ACK I2C_ACK `(v  1 e 1 0 ]
+"63
+[v _I2C_NACK I2C_NACK `(v  1 e 1 0 ]
+"74
+[v _EEPROM_Write EEPROM_Write `(v  1 e 1 0 ]
+"102
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+"11 E:\Talha\New Folder\I2C.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"6174 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"7580
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"12712
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"12952
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @4037 ]
+"13306
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
+"13544
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @4039 ]
+"14174
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @4040 ]
+"14428
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
+"14433
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"18500
+[v _RCEN1 RCEN1 `VEb  1 e 0 @32299 ]
+"18863
+[v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
+"3 E:\Talha\New Folder\I2C.X\DIO.c
+[v _is_init is_init `uc  1 s 1 is_init ]
+[s S28 DIO_Cfg_s 4 `uc 1 port 1 0 `uc 1 dir 1 1 `uc 1 pin 1 2 `uc 1 operation_mode 1 3 ]
+"21 E:\Talha\New Folder\I2C.X\DIO_Config.c
+[v _Dio_configutation_C Dio_configutation_C `S28  1 e 4 0 ]
+"11 E:\Talha\New Folder\I2C.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"21
+} 0
+"39 E:\Talha\New Folder\I2C.X\i2c_EEPROM.c
+[v _I2C_Master_Write I2C_Master_Write `(uc  1 e 1 0 ]
+{
+[v I2C_Master_Write@data data `uc  1 a 1 wreg ]
+[v I2C_Master_Write@data data `uc  1 a 1 wreg ]
+"41
+[v I2C_Master_Write@data data `uc  1 a 1 1 ]
+"46
+} 0
+"19
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"22
+} 0
+"10
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+{
+[v I2C_Master_Init@baud baud `Cul  1 p 4 13 ]
+"18
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"7
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"30
+} 0
+"11 E:\Talha\New Folder\I2C.X\DIO.c
+[v _DIO_init DIO_init `(uc  1 e 1 0 ]
+{
+"13
+[v DIO_init@ret_error ret_error `uc  1 a 1 4 ]
+[s S28 DIO_Cfg_s 4 `uc 1 port 1 0 `uc 1 dir 1 1 `uc 1 pin 1 2 `uc 1 operation_mode 1 3 ]
+"11
+[v DIO_init@DIO_info DIO_info `*.39S28  1 p 2 0 ]
+"14
+[v DIO_init@first_powerup_init first_powerup_init `uc  1 s 1 first_powerup_init ]
+"103
+} 0

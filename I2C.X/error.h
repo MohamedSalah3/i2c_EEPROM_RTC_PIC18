@@ -27,4 +27,6 @@ typedef uint8_t ERROR_STATUS;
 #define INVALID_ARG 28
 #define INVALID_ADC_PARM 30
 #define TMU_MODULE 32
+
+#define NULL '\0'
 #endif	/* ERROR_H */

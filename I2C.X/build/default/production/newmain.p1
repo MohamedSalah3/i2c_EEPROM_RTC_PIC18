@@ -1,5 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"13 ./i2c_EEPROM.h
+[; ;./i2c_EEPROM.h: 13: void I2C_Master_Init(const unsigned long baud);
+[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f23k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -740,9 +743,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "12
-[; ;newmain.c: 12:     return;
+[; ;newmain.c: 12:     I2C_Master_Init(10000);
+[e ( _I2C_Master_Init (1 -> -> -> 10000 `i `l `ul ]
+"14
+[; ;newmain.c: 14:     while (1){
+[e :U 828 ]
+{
+"19
+[; ;newmain.c: 19:     }
+}
+[e :U 827 ]
+[e $U 828  ]
+[e :U 829 ]
+"20
+[; ;newmain.c: 20:     return;
 [e $UE 826  ]
-"13
-[; ;newmain.c: 13: }
+"21
+[; ;newmain.c: 21: }
 [e :UE 826 ]
 }

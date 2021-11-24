@@ -1,0 +1,1491 @@
+
+
+Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
+                                                                                               Wed Nov 24 20:05:04 2021
+
+Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
+     1                           	processor	18F23K22
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	nvCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    11                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1,group=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    19                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    20                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    21  0000                     
+    22                           ; Version 2.20
+    23                           ; Generated 05/05/2020 GMT
+    24                           ; 
+    25                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC18F23K22 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     
+    57                           	psect	idataCOMRAM
+    58  001BB0                     __pidataCOMRAM:
+    59                           	callstack 0
+    60                           
+    61                           ;initializer for _Dio_configutation_D
+    62  001BB0  03                 	db	3
+    63  001BB1  FF                 	db	255
+    64  001BB2  FF                 	db	255
+    65  001BB3  00                 	db	0
+    66                           
+    67                           ;initializer for _Dio_configutation_B
+    68  001BB4  01                 	db	1
+    69  001BB5  FF                 	db	255
+    70  001BB6  FF                 	db	255
+    71  001BB7  00                 	db	0
+    72                           
+    73                           ;initializer for _Dio_configutation_A_7_seg
+    74  001BB8  00                 	db	0
+    75  001BB9  0C                 	db	12
+    76  001BBA  FF                 	db	255
+    77  001BBB  06                 	db	6
+    78                           
+    79                           ;initializer for _Dio_configutation_A_ADC
+    80  001BBC  00                 	db	0
+    81  001BBD  01                 	db	1
+    82  001BBE  00                 	db	0
+    83  001BBF  06                 	db	6
+    84                           
+    85                           ;initializer for _Dio_configutation_C
+    86  001BC0  02                 	db	2
+    87  001BC1  18                 	db	24
+    88  001BC2  FF                 	db	255
+    89  001BC3  00                 	db	0
+    90                           
+    91                           	psect	nvCOMRAM
+    92  000030                     __pnvCOMRAM:
+    93                           	callstack 0
+    94  000030                     _is_init:
+    95                           	callstack 0
+    96  000030                     	ds	1
+    97  0000                     _TRISA	set	3986
+    98  0000                     _ADCON1	set	4033
+    99  0000                     _PORTA	set	3968
+   100  0000                     _SSPBUF	set	4041
+   101  0000                     _SSP1BUF	set	4041
+   102  0000                     _SSP1STAT	set	4039
+   103  0000                     _SSP1ADD	set	4040
+   104  0000                     _SSP1CON2	set	4037
+   105  0000                     _SSP1CON1	set	4038
+   106  0000                     _RCEN1	set	32299
+   107  0000                     _SSPIF	set	31987
+   108                           
+   109                           ; #config settings
+   110                           
+   111                           	psect	cinit
+   112  001C30                     __pcinit:
+   113                           	callstack 0
+   114  001C30                     start_initialization:
+   115                           	callstack 0
+   116  001C30                     __initialization:
+   117                           	callstack 0
+   118                           
+   119                           ; Initialize objects allocated to COMRAM (20 bytes)
+   120                           ; load TBLPTR registers with __pidataCOMRAM
+   121  001C30  0EB0               	movlw	low __pidataCOMRAM
+   122  001C32  6EF6               	movwf	tblptrl,c
+   123  001C34  0E1B               	movlw	high __pidataCOMRAM
+   124  001C36  6EF7               	movwf	tblptrh,c
+   125  001C38  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   126  001C3A  6EF8               	movwf	tblptru,c
+   127  001C3C  EE00  F016         	lfsr	0,__pdataCOMRAM
+   128  001C40  EE10 F014          	lfsr	1,20
+   129  001C44                     copy_data0:
+   130  001C44  0009               	tblrd		*+
+   131  001C46  CFF5 FFEE          	movff	tablat,postinc0
+   132  001C4A  50E5               	movf	postdec1,w,c
+   133  001C4C  50E1               	movf	fsr1l,w,c
+   134  001C4E  E1FA               	bnz	copy_data0
+   135                           
+   136                           ; Clear objects allocated to COMRAM (6 bytes)
+   137  001C50  6A2F               	clrf	(__pbssCOMRAM+5)& (0+255),c
+   138  001C52  6A2E               	clrf	(__pbssCOMRAM+4)& (0+255),c
+   139  001C54  6A2D               	clrf	(__pbssCOMRAM+3)& (0+255),c
+   140  001C56  6A2C               	clrf	(__pbssCOMRAM+2)& (0+255),c
+   141  001C58  6A2B               	clrf	(__pbssCOMRAM+1)& (0+255),c
+   142  001C5A  6A2A               	clrf	__pbssCOMRAM& (0+255),c
+   143  001C5C                     end_of_initialization:
+   144                           	callstack 0
+   145  001C5C                     __end_of__initialization:
+   146                           	callstack 0
+   147  001C5C  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   148  001C5E  6EF8               	movwf	tblptru,c
+   149  001C60  0100               	movlb	0
+   150  001C62  EFE2  F00D         	goto	_main	;jump to C main() function
+   151                           
+   152                           	psect	bssCOMRAM
+   153  00002A                     __pbssCOMRAM:
+   154                           	callstack 0
+   155  00002A                     _Dio_configutation_E:
+   156                           	callstack 0
+   157  00002A                     	ds	4
+   158  00002E                     DIO_Write@first_powerup:
+   159                           	callstack 0
+   160  00002E                     	ds	1
+   161  00002F                     DIO_init@first_powerup_init:
+   162                           	callstack 0
+   163  00002F                     	ds	1
+   164                           
+   165                           	psect	dataCOMRAM
+   166  000016                     __pdataCOMRAM:
+   167                           	callstack 0
+   168  000016                     _Dio_configutation_D:
+   169                           	callstack 0
+   170  000016                     	ds	4
+   171  00001A                     _Dio_configutation_B:
+   172                           	callstack 0
+   173  00001A                     	ds	4
+   174  00001E                     _Dio_configutation_A_7_seg:
+   175                           	callstack 0
+   176  00001E                     	ds	4
+   177  000022                     _Dio_configutation_A_ADC:
+   178                           	callstack 0
+   179  000022                     	ds	4
+   180  000026                     _Dio_configutation_C:
+   181                           	callstack 0
+   182  000026                     	ds	4
+   183                           
+   184                           	psect	cstackCOMRAM
+   185  000001                     __pcstackCOMRAM:
+   186                           	callstack 0
+   187  000001                     ??_I2C_Master_Wait:
+   188  000001                     ?___lldiv:
+   189                           	callstack 0
+   190  000001                     DIO_init@DIO_info:
+   191                           	callstack 0
+   192  000001                     ___lldiv@dividend:
+   193                           	callstack 0
+   194                           
+   195                           ; 4 bytes @ 0x0
+   196  000001                     	ds	1
+   197  000002                     I2C_Master_Write@data:
+   198                           	callstack 0
+   199                           
+   200                           ; 1 bytes @ 0x1
+   201  000002                     	ds	1
+   202  000003                     ??_DIO_init:
+   203                           
+   204                           ; 1 bytes @ 0x2
+   205  000003                     	ds	2
+   206  000005                     DIO_init@ret_error:
+   207                           	callstack 0
+   208  000005                     ___lldiv@divisor:
+   209                           	callstack 0
+   210                           
+   211                           ; 4 bytes @ 0x4
+   212  000005                     	ds	4
+   213  000009                     ___lldiv@quotient:
+   214                           	callstack 0
+   215                           
+   216                           ; 4 bytes @ 0x8
+   217  000009                     	ds	4
+   218  00000D                     ___lldiv@counter:
+   219                           	callstack 0
+   220                           
+   221                           ; 1 bytes @ 0xC
+   222  00000D                     	ds	1
+   223  00000E                     I2C_Master_Init@baud:
+   224                           	callstack 0
+   225                           
+   226                           ; 4 bytes @ 0xD
+   227  00000E                     	ds	4
+   228  000012                     ??_I2C_Master_Init:
+   229                           
+   230                           ; 1 bytes @ 0x11
+   231  000012                     	ds	4
+   232  000016                     
+   233                           ; 1 bytes @ 0x15
+   234 ;;
+   235 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   236 ;;
+   237 ;; *************** function _main *****************
+   238 ;; Defined at:
+   239 ;;		line 11 in file "main.c"
+   240 ;; Parameters:    Size  Location     Type
+   241 ;;		None
+   242 ;; Auto vars:     Size  Location     Type
+   243 ;;  ACK_STATUS      1    0        unsigned char 
+   244 ;; Return value:  Size  Location     Type
+   245 ;;                  1    wreg      void 
+   246 ;; Registers used:
+   247 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   248 ;; Tracked objects:
+   249 ;;		On entry : 0/0
+   250 ;;		On exit  : 0/0
+   251 ;;		Unchanged: 0/0
+   252 ;; Data sizes:     COMRAM   BANK0   BANK1
+   253 ;;      Params:         0       0       0
+   254 ;;      Locals:         1       0       0
+   255 ;;      Temps:          0       0       0
+   256 ;;      Totals:         1       0       0
+   257 ;;Total ram usage:        1 bytes
+   258 ;; Hardware stack levels required when called:    2
+   259 ;; This function calls:
+   260 ;;		_I2C_Master_Init
+   261 ;;		_I2C_Master_Write
+   262 ;; This function is called by:
+   263 ;;		Startup code after reset
+   264 ;; This function uses a non-reentrant model
+   265 ;;
+   266                           
+   267                           	psect	text0
+   268  001BC4                     __ptext0:
+   269                           	callstack 0
+   270  001BC4                     _main:
+   271                           	callstack 29
+   272  001BC4                     
+   273                           ;main.c: 12:     I2C_Master_Init(10000);
+   274  001BC4  0E10               	movlw	16
+   275  001BC6  6E0E               	movwf	I2C_Master_Init@baud^0,c
+   276  001BC8  0E27               	movlw	39
+   277  001BCA  6E0F               	movwf	(I2C_Master_Init@baud+1)^0,c
+   278  001BCC  0E00               	movlw	0
+   279  001BCE  6E10               	movwf	(I2C_Master_Init@baud+2)^0,c
+   280  001BD0  0E00               	movlw	0
+   281  001BD2  6E11               	movwf	(I2C_Master_Init@baud+3)^0,c
+   282  001BD4  EC33  F00E         	call	_I2C_Master_Init	;wreg free
+   283  001BD8  0E41               	movlw	65
+   284  001BDA  ECF3  F00D         	call	_I2C_Master_Write
+   285  001BDE                     l215:
+   286  001BDE  EFEF  F00D         	goto	l215
+   287  001BE2  EF00  F000         	goto	start
+   288  001BE6                     __end_of_main:
+   289                           	callstack 0
+   290                           
+   291 ;; *************** function _I2C_Master_Write *****************
+   292 ;; Defined at:
+   293 ;;		line 39 in file "i2c_EEPROM.c"
+   294 ;; Parameters:    Size  Location     Type
+   295 ;;  data            1    wreg     unsigned char 
+   296 ;; Auto vars:     Size  Location     Type
+   297 ;;  data            1    1[COMRAM] unsigned char 
+   298 ;; Return value:  Size  Location     Type
+   299 ;;                  1    wreg      unsigned char 
+   300 ;; Registers used:
+   301 ;;		wreg, status,2, status,0, cstack
+   302 ;; Tracked objects:
+   303 ;;		On entry : 0/0
+   304 ;;		On exit  : 0/0
+   305 ;;		Unchanged: 0/0
+   306 ;; Data sizes:     COMRAM   BANK0   BANK1
+   307 ;;      Params:         0       0       0
+   308 ;;      Locals:         1       0       0
+   309 ;;      Temps:          0       0       0
+   310 ;;      Totals:         1       0       0
+   311 ;;Total ram usage:        1 bytes
+   312 ;; Hardware stack levels used:    1
+   313 ;; Hardware stack levels required when called:    1
+   314 ;; This function calls:
+   315 ;;		_I2C_Master_Wait
+   316 ;; This function is called by:
+   317 ;;		_main
+   318 ;;		_EEPROM_Write
+   319 ;;		_EEPROM_Write_Page
+   320 ;;		_EEPROM_Read
+   321 ;;		_EEPROM_Read_Page
+   322 ;; This function uses a non-reentrant model
+   323 ;;
+   324                           
+   325                           	psect	text1
+   326  001BE6                     __ptext1:
+   327                           	callstack 0
+   328  001BE6                     _I2C_Master_Write:
+   329                           	callstack 29
+   330                           
+   331                           ;incstack = 0
+   332                           ;I2C_Master_Write@data stored from wreg
+   333  001BE6  6E02               	movwf	I2C_Master_Write@data^0,c
+   334  001BE8                     
+   335                           ;i2c_EEPROM.c: 39: unsigned char I2C_Master_Write(unsigned char data);i2c_EEPROM.c: 40: 
+      +                          {;i2c_EEPROM.c: 41:   I2C_Master_Wait();
+   336  001BE8  EC05  F00E         	call	_I2C_Master_Wait	;wreg free
+   337  001BEC                     
+   338                           ;i2c_EEPROM.c: 42:   SSP1BUF = data;
+   339  001BEC  C002  FFC9         	movff	I2C_Master_Write@data,4041	;volatile
+   340  001BF0                     l41:
+   341  001BF0  A69E               	btfss	3998,3,c	;volatile
+   342  001BF2  EFFD  F00D         	goto	u111
+   343  001BF6  EFFF  F00D         	goto	u110
+   344  001BFA                     u111:
+   345  001BFA  EFF8  F00D         	goto	l41
+   346  001BFE                     u110:
+   347  001BFE                     
+   348                           ;i2c_EEPROM.c: 44:   SSPIF=1;
+   349  001BFE  869E               	bsf	3998,3,c	;volatile
+   350  001C00                     
+   351                           ;i2c_EEPROM.c: 45:   return ( (SSP1CON2 >> 6) & 1 );
+   352  001C00  44C5               	rlncf	197,w,c	;volatile
+   353  001C02  46E8               	rlncf	wreg,f,c
+   354  001C04  0B03               	andlw	3
+   355  001C06  0B01               	andlw	1
+   356  001C08  0012               	return		;funcret
+   357  001C0A                     __end_of_I2C_Master_Write:
+   358                           	callstack 0
+   359                           
+   360 ;; *************** function _I2C_Master_Wait *****************
+   361 ;; Defined at:
+   362 ;;		line 19 in file "i2c_EEPROM.c"
+   363 ;; Parameters:    Size  Location     Type
+   364 ;;		None
+   365 ;; Auto vars:     Size  Location     Type
+   366 ;;		None
+   367 ;; Return value:  Size  Location     Type
+   368 ;;                  1    wreg      void 
+   369 ;; Registers used:
+   370 ;;		wreg, status,2, status,0
+   371 ;; Tracked objects:
+   372 ;;		On entry : 0/0
+   373 ;;		On exit  : 0/0
+   374 ;;		Unchanged: 0/0
+   375 ;; Data sizes:     COMRAM   BANK0   BANK1
+   376 ;;      Params:         0       0       0
+   377 ;;      Locals:         0       0       0
+   378 ;;      Temps:          1       0       0
+   379 ;;      Totals:         1       0       0
+   380 ;;Total ram usage:        1 bytes
+   381 ;; Hardware stack levels used:    1
+   382 ;; This function calls:
+   383 ;;		Nothing
+   384 ;; This function is called by:
+   385 ;;		_I2C_Master_Write
+   386 ;;		_I2C_Master_Start
+   387 ;;		_I2C_Master_RepeatedStart
+   388 ;;		_I2C_Master_Stop
+   389 ;;		_I2C_Read_Byte
+   390 ;;		_I2C_ACK
+   391 ;;		_I2C_NACK
+   392 ;; This function uses a non-reentrant model
+   393 ;;
+   394                           
+   395                           	psect	text2
+   396  001C0A                     __ptext2:
+   397                           	callstack 0
+   398  001C0A                     _I2C_Master_Wait:
+   399                           	callstack 29
+   400  001C0A                     l26:
+   401  001C0A  B4C7               	btfsc	199,2,c	;volatile
+   402  001C0C  EF0A  F00E         	goto	u41
+   403  001C10  EF0C  F00E         	goto	u40
+   404  001C14                     u41:
+   405  001C14  EF05  F00E         	goto	l26
+   406  001C18                     u40:
+   407  001C18  CFC5 F001          	movff	4037,??_I2C_Master_Wait	;volatile
+   408  001C1C  0E1F               	movlw	31
+   409  001C1E  1601               	andwf	??_I2C_Master_Wait^0,f,c
+   410  001C20  A4D8               	btfss	status,2,c
+   411  001C22  EF15  F00E         	goto	u51
+   412  001C26  EF17  F00E         	goto	u50
+   413  001C2A                     u51:
+   414  001C2A  EF05  F00E         	goto	l26
+   415  001C2E                     u50:
+   416  001C2E  0012               	return		;funcret
+   417  001C30                     __end_of_I2C_Master_Wait:
+   418                           	callstack 0
+   419                           
+   420 ;; *************** function _I2C_Master_Init *****************
+   421 ;; Defined at:
+   422 ;;		line 10 in file "i2c_EEPROM.c"
+   423 ;; Parameters:    Size  Location     Type
+   424 ;;  baud            4   13[COMRAM] const unsigned long 
+   425 ;; Auto vars:     Size  Location     Type
+   426 ;;		None
+   427 ;; Return value:  Size  Location     Type
+   428 ;;                  1    wreg      void 
+   429 ;; Registers used:
+   430 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   431 ;; Tracked objects:
+   432 ;;		On entry : 0/0
+   433 ;;		On exit  : 0/0
+   434 ;;		Unchanged: 0/0
+   435 ;; Data sizes:     COMRAM   BANK0   BANK1
+   436 ;;      Params:         4       0       0
+   437 ;;      Locals:         0       0       0
+   438 ;;      Temps:          4       0       0
+   439 ;;      Totals:         8       0       0
+   440 ;;Total ram usage:        8 bytes
+   441 ;; Hardware stack levels used:    1
+   442 ;; Hardware stack levels required when called:    1
+   443 ;; This function calls:
+   444 ;;		_DIO_init
+   445 ;;		___lldiv
+   446 ;; This function is called by:
+   447 ;;		_main
+   448 ;;		_nvm_Write
+   449 ;; This function uses a non-reentrant model
+   450 ;;
+   451                           
+   452                           	psect	text3
+   453  001C66                     __ptext3:
+   454                           	callstack 0
+   455  001C66                     _I2C_Master_Init:
+   456                           	callstack 29
+   457  001C66                     
+   458                           ;i2c_EEPROM.c: 10: void I2C_Master_Init(const unsigned long baud);i2c_EEPROM.c: 11: {;i2
+      +                          c_EEPROM.c: 12:   SSP1CON1 = 0b00101000;
+   459  001C66  0E28               	movlw	40
+   460  001C68  6EC6               	movwf	198,c	;volatile
+   461                           
+   462                           ;i2c_EEPROM.c: 13:   SSP1CON2 = 0;
+   463  001C6A  0E00               	movlw	0
+   464  001C6C  6EC5               	movwf	197,c	;volatile
+   465  001C6E                     
+   466                           ;i2c_EEPROM.c: 14:   SSP1ADD = (unsigned char)(16000000/(4*baud))-1;
+   467  001C6E  0E00               	movlw	0
+   468  001C70  6E01               	movwf	___lldiv@dividend^0,c
+   469  001C72  0E24               	movlw	36
+   470  001C74  6E02               	movwf	(___lldiv@dividend+1)^0,c
+   471  001C76  0EF4               	movlw	244
+   472  001C78  6E03               	movwf	(___lldiv@dividend+2)^0,c
+   473  001C7A  0E00               	movlw	0
+   474  001C7C  6E04               	movwf	(___lldiv@dividend+3)^0,c
+   475  001C7E  C00E  F012         	movff	I2C_Master_Init@baud,??_I2C_Master_Init
+   476  001C82  C00F  F013         	movff	I2C_Master_Init@baud+1,??_I2C_Master_Init+1
+   477  001C86  C010  F014         	movff	I2C_Master_Init@baud+2,??_I2C_Master_Init+2
+   478  001C8A  C011  F015         	movff	I2C_Master_Init@baud+3,??_I2C_Master_Init+3
+   479  001C8E  0E02               	movlw	2
+   480  001C90                     u245:
+   481  001C90  90D8               	bcf	status,0,c
+   482  001C92  3612               	rlcf	??_I2C_Master_Init^0,f,c
+   483  001C94  3613               	rlcf	(??_I2C_Master_Init+1)^0,f,c
+   484  001C96  3614               	rlcf	(??_I2C_Master_Init+2)^0,f,c
+   485  001C98  3615               	rlcf	(??_I2C_Master_Init+3)^0,f,c
+   486  001C9A  2EE8               	decfsz	wreg,f,c
+   487  001C9C  EF48  F00E         	goto	u245
+   488  001CA0  C012  F005         	movff	??_I2C_Master_Init,___lldiv@divisor
+   489  001CA4  C013  F006         	movff	??_I2C_Master_Init+1,___lldiv@divisor+1
+   490  001CA8  C014  F007         	movff	??_I2C_Master_Init+2,___lldiv@divisor+2
+   491  001CAC  C015  F008         	movff	??_I2C_Master_Init+3,___lldiv@divisor+3
+   492  001CB0  EC65  F00E         	call	___lldiv	;wreg free
+   493  001CB4  0401               	decf	?___lldiv^0,w,c
+   494  001CB6  6EC8               	movwf	200,c	;volatile
+   495  001CB8                     
+   496                           ;i2c_EEPROM.c: 15:   SSP1STAT = 0;
+   497  001CB8  0E00               	movlw	0
+   498  001CBA  6EC7               	movwf	199,c	;volatile
+   499  001CBC                     
+   500                           ;i2c_EEPROM.c: 16:  DIO_init (&Dio_configutation_C);
+   501  001CBC  0E26               	movlw	low _Dio_configutation_C
+   502  001CBE  6E01               	movwf	DIO_init@DIO_info^0,c
+   503  001CC0  0E00               	movlw	high _Dio_configutation_C
+   504  001CC2  6E02               	movwf	(DIO_init@DIO_info+1)^0,c
+   505  001CC4  ECB7  F00E         	call	_DIO_init	;wreg free
+   506  001CC8  0012               	return		;funcret
+   507  001CCA                     __end_of_I2C_Master_Init:
+   508                           	callstack 0
+   509                           
+   510 ;; *************** function ___lldiv *****************
+   511 ;; Defined at:
+   512 ;;		line 7 in file "C:\Program Files\Microchip\xc8\v2.31\pic\sources\c99\common\__lldiv.c"
+   513 ;; Parameters:    Size  Location     Type
+   514 ;;  dividend        4    0[COMRAM] unsigned long 
+   515 ;;  divisor         4    4[COMRAM] unsigned long 
+   516 ;; Auto vars:     Size  Location     Type
+   517 ;;  quotient        4    8[COMRAM] unsigned long 
+   518 ;;  counter         1   12[COMRAM] unsigned char 
+   519 ;; Return value:  Size  Location     Type
+   520 ;;                  4    0[COMRAM] unsigned long 
+   521 ;; Registers used:
+   522 ;;		wreg, status,2, status,0
+   523 ;; Tracked objects:
+   524 ;;		On entry : 0/0
+   525 ;;		On exit  : 0/0
+   526 ;;		Unchanged: 0/0
+   527 ;; Data sizes:     COMRAM   BANK0   BANK1
+   528 ;;      Params:         8       0       0
+   529 ;;      Locals:         5       0       0
+   530 ;;      Temps:          0       0       0
+   531 ;;      Totals:        13       0       0
+   532 ;;Total ram usage:       13 bytes
+   533 ;; Hardware stack levels used:    1
+   534 ;; This function calls:
+   535 ;;		Nothing
+   536 ;; This function is called by:
+   537 ;;		_I2C_Master_Init
+   538 ;; This function uses a non-reentrant model
+   539 ;;
+   540                           
+   541                           	psect	text4
+   542  001CCA                     __ptext4:
+   543                           	callstack 0
+   544  001CCA                     ___lldiv:
+   545                           	callstack 29
+   546  001CCA  0E00               	movlw	0
+   547  001CCC  6E09               	movwf	___lldiv@quotient^0,c
+   548  001CCE  0E00               	movlw	0
+   549  001CD0  6E0A               	movwf	(___lldiv@quotient+1)^0,c
+   550  001CD2  0E00               	movlw	0
+   551  001CD4  6E0B               	movwf	(___lldiv@quotient+2)^0,c
+   552  001CD6  0E00               	movlw	0
+   553  001CD8  6E0C               	movwf	(___lldiv@quotient+3)^0,c
+   554  001CDA  5005               	movf	___lldiv@divisor^0,w,c
+   555  001CDC  1006               	iorwf	(___lldiv@divisor+1)^0,w,c
+   556  001CDE  1007               	iorwf	(___lldiv@divisor+2)^0,w,c
+   557  001CE0  1008               	iorwf	(___lldiv@divisor+3)^0,w,c
+   558  001CE2  B4D8               	btfsc	status,2,c
+   559  001CE4  EF76  F00E         	goto	u211
+   560  001CE8  EF78  F00E         	goto	u210
+   561  001CEC                     u211:
+   562  001CEC  EFAE  F00E         	goto	l248
+   563  001CF0                     u210:
+   564  001CF0  0E01               	movlw	1
+   565  001CF2  6E0D               	movwf	___lldiv@counter^0,c
+   566  001CF4  EF82  F00E         	goto	l1412
+   567  001CF8                     l1410:
+   568  001CF8  90D8               	bcf	status,0,c
+   569  001CFA  3605               	rlcf	___lldiv@divisor^0,f,c
+   570  001CFC  3606               	rlcf	(___lldiv@divisor+1)^0,f,c
+   571  001CFE  3607               	rlcf	(___lldiv@divisor+2)^0,f,c
+   572  001D00  3608               	rlcf	(___lldiv@divisor+3)^0,f,c
+   573  001D02  2A0D               	incf	___lldiv@counter^0,f,c
+   574  001D04                     l1412:
+   575  001D04  AE08               	btfss	(___lldiv@divisor+3)^0,7,c
+   576  001D06  EF87  F00E         	goto	u221
+   577  001D0A  EF89  F00E         	goto	u220
+   578  001D0E                     u221:
+   579  001D0E  EF7C  F00E         	goto	l1410
+   580  001D12                     u220:
+   581  001D12                     l1414:
+   582  001D12  90D8               	bcf	status,0,c
+   583  001D14  3609               	rlcf	___lldiv@quotient^0,f,c
+   584  001D16  360A               	rlcf	(___lldiv@quotient+1)^0,f,c
+   585  001D18  360B               	rlcf	(___lldiv@quotient+2)^0,f,c
+   586  001D1A  360C               	rlcf	(___lldiv@quotient+3)^0,f,c
+   587  001D1C  5005               	movf	___lldiv@divisor^0,w,c
+   588  001D1E  5C01               	subwf	___lldiv@dividend^0,w,c
+   589  001D20  5006               	movf	(___lldiv@divisor+1)^0,w,c
+   590  001D22  5802               	subwfb	(___lldiv@dividend+1)^0,w,c
+   591  001D24  5007               	movf	(___lldiv@divisor+2)^0,w,c
+   592  001D26  5803               	subwfb	(___lldiv@dividend+2)^0,w,c
+   593  001D28  5008               	movf	(___lldiv@divisor+3)^0,w,c
+   594  001D2A  5804               	subwfb	(___lldiv@dividend+3)^0,w,c
+   595  001D2C  A0D8               	btfss	status,0,c
+   596  001D2E  EF9B  F00E         	goto	u231
+   597  001D32  EF9D  F00E         	goto	u230
+   598  001D36                     u231:
+   599  001D36  EFA6  F00E         	goto	l1422
+   600  001D3A                     u230:
+   601  001D3A  5005               	movf	___lldiv@divisor^0,w,c
+   602  001D3C  5E01               	subwf	___lldiv@dividend^0,f,c
+   603  001D3E  5006               	movf	(___lldiv@divisor+1)^0,w,c
+   604  001D40  5A02               	subwfb	(___lldiv@dividend+1)^0,f,c
+   605  001D42  5007               	movf	(___lldiv@divisor+2)^0,w,c
+   606  001D44  5A03               	subwfb	(___lldiv@dividend+2)^0,f,c
+   607  001D46  5008               	movf	(___lldiv@divisor+3)^0,w,c
+   608  001D48  5A04               	subwfb	(___lldiv@dividend+3)^0,f,c
+   609  001D4A  8009               	bsf	___lldiv@quotient^0,0,c
+   610  001D4C                     l1422:
+   611  001D4C  90D8               	bcf	status,0,c
+   612  001D4E  3208               	rrcf	(___lldiv@divisor+3)^0,f,c
+   613  001D50  3207               	rrcf	(___lldiv@divisor+2)^0,f,c
+   614  001D52  3206               	rrcf	(___lldiv@divisor+1)^0,f,c
+   615  001D54  3205               	rrcf	___lldiv@divisor^0,f,c
+   616  001D56  2E0D               	decfsz	___lldiv@counter^0,f,c
+   617  001D58  EF89  F00E         	goto	l1414
+   618  001D5C                     l248:
+   619  001D5C  C009  F001         	movff	___lldiv@quotient,?___lldiv
+   620  001D60  C00A  F002         	movff	___lldiv@quotient+1,?___lldiv+1
+   621  001D64  C00B  F003         	movff	___lldiv@quotient+2,?___lldiv+2
+   622  001D68  C00C  F004         	movff	___lldiv@quotient+3,?___lldiv+3
+   623  001D6C  0012               	return		;funcret
+   624  001D6E                     __end_of___lldiv:
+   625                           	callstack 0
+   626                           
+   627 ;; *************** function _DIO_init *****************
+   628 ;; Defined at:
+   629 ;;		line 11 in file "DIO.c"
+   630 ;; Parameters:    Size  Location     Type
+   631 ;;  DIO_info        2    0[COMRAM] PTR struct DIO_Cfg_s
+   632 ;;		 -> Dio_configutation_C(4), 
+   633 ;; Auto vars:     Size  Location     Type
+   634 ;;  ret_error       1    4[COMRAM] unsigned char 
+   635 ;; Return value:  Size  Location     Type
+   636 ;;                  1    wreg      unsigned char 
+   637 ;; Registers used:
+   638 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   639 ;; Tracked objects:
+   640 ;;		On entry : 0/0
+   641 ;;		On exit  : 0/0
+   642 ;;		Unchanged: 0/0
+   643 ;; Data sizes:     COMRAM   BANK0   BANK1
+   644 ;;      Params:         2       0       0
+   645 ;;      Locals:         1       0       0
+   646 ;;      Temps:          2       0       0
+   647 ;;      Totals:         5       0       0
+   648 ;;Total ram usage:        5 bytes
+   649 ;; Hardware stack levels used:    1
+   650 ;; This function calls:
+   651 ;;		Nothing
+   652 ;; This function is called by:
+   653 ;;		_I2C_Master_Init
+   654 ;; This function uses a non-reentrant model
+   655 ;;
+   656                           
+   657                           	psect	text5
+   658  001D6E                     __ptext5:
+   659                           	callstack 0
+   660  001D6E                     _DIO_init:
+   661                           	callstack 29
+   662  001D6E                     
+   663                           ;DIO.c: 11: ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);DIO.c: 12: {;DIO.c: 13: uint8_t 
+      +                          ret_error=0;
+   664  001D6E  0E00               	movlw	0
+   665  001D70  6E05               	movwf	DIO_init@ret_error^0,c
+   666                           
+   667                           ;DIO.c: 14: static uint8_t first_powerup_init = 0;;DIO.c: 15: is_init=1;
+   668  001D72  0E01               	movlw	1
+   669  001D74  6E30               	movwf	_is_init^0,c
+   670                           
+   671                           ;DIO.c: 16:  if (first_powerup_init == 0) {
+   672  001D76  502F               	movf	DIO_init@first_powerup_init^0,w,c
+   673  001D78  A4D8               	btfss	status,2,c
+   674  001D7A  EFC1  F00E         	goto	u181
+   675  001D7E  EFC3  F00E         	goto	u180
+   676  001D82                     u181:
+   677  001D82  EF02  F00F         	goto	l1338
+   678  001D86                     u180:
+   679  001D86  EFDC  F00E         	goto	l1334
+   680  001D8A                     l1322:
+   681                           
+   682                           ;DIO.c: 20:   PORTA=0x00;
+   683  001D8A  0E00               	movlw	0
+   684  001D8C  6E80               	movwf	128,c	;volatile
+   685                           
+   686                           ;DIO.c: 21:       break;
+   687  001D8E  EF01  F00F         	goto	l1336
+   688  001D92                     l1324:
+   689                           
+   690                           ;DIO.c: 23:   *((reg_type8_t)(0x0086))=0x00;
+   691  001D92  0E00               	movlw	0
+   692  001D94  0100               	movlb	0	; () banked
+   693  001D96  6F86               	movwf	134,b	;volatile
+   694                           
+   695                           ;DIO.c: 24:       break;
+   696  001D98  EF01  F00F         	goto	l1336
+   697  001D9C                     l1326:
+   698                           
+   699                           ;DIO.c: 26:   *((reg_type8_t)(0x0F94))=0x00;
+   700  001D9C  0E00               	movlw	0
+   701  001D9E  6E94               	movwf	148,c	;volatile
+   702                           
+   703                           ;DIO.c: 27:       break;
+   704  001DA0  EF01  F00F         	goto	l1336
+   705  001DA4                     l1328:
+   706                           
+   707                           ;DIO.c: 29:   *((reg_type8_t)(0x0088))=0x00;
+   708  001DA4  0E00               	movlw	0
+   709  001DA6  0100               	movlb	0	; () banked
+   710  001DA8  6F88               	movwf	136,b	;volatile
+   711                           
+   712                           ;DIO.c: 30:       break;
+   713  001DAA  EF01  F00F         	goto	l1336
+   714  001DAE                     l1330:
+   715                           
+   716                           ;DIO.c: 32:   *((reg_type8_t)(0x0089))=0x00;
+   717  001DAE  0E00               	movlw	0
+   718  001DB0  0100               	movlb	0	; () banked
+   719  001DB2  6F89               	movwf	137,b	;volatile
+   720                           
+   721                           ;DIO.c: 33:       break;
+   722  001DB4  EF01  F00F         	goto	l1336
+   723  001DB8                     l1334:
+   724  001DB8  C001  FFD9         	movff	DIO_init@DIO_info,fsr2l
+   725  001DBC  C002  FFDA         	movff	DIO_init@DIO_info+1,fsr2h
+   726  001DC0  50DF               	movf	indf2,w,c
+   727  001DC2  6E03               	movwf	??_DIO_init^0,c
+   728  001DC4  6A04               	clrf	(??_DIO_init+1)^0,c
+   729                           
+   730                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   731                           ; Switch size 1, requested type "simple"
+   732                           ; Number of cases is 1, Range of values is 0 to 0
+   733                           ; switch strategies available:
+   734                           ; Name         Instructions Cycles
+   735                           ; simple_byte            4     3 (average)
+   736                           ;	Chosen strategy is simple_byte
+   737  001DC6  5004               	movf	(??_DIO_init+1)^0,w,c
+   738  001DC8  0A00               	xorlw	0	; case 0
+   739  001DCA  B4D8               	btfsc	status,2,c
+   740  001DCC  EFEA  F00E         	goto	l1526
+   741  001DD0  EF01  F00F         	goto	l1336
+   742  001DD4                     l1526:
+   743                           
+   744                           ; Switch size 1, requested type "simple"
+   745                           ; Number of cases is 5, Range of values is 0 to 4
+   746                           ; switch strategies available:
+   747                           ; Name         Instructions Cycles
+   748                           ; simple_byte           16     9 (average)
+   749                           ;	Chosen strategy is simple_byte
+   750  001DD4  5003               	movf	??_DIO_init^0,w,c
+   751  001DD6  0A00               	xorlw	0	; case 0
+   752  001DD8  B4D8               	btfsc	status,2,c
+   753  001DDA  EFC5  F00E         	goto	l1322
+   754  001DDE  0A01               	xorlw	1	; case 1
+   755  001DE0  B4D8               	btfsc	status,2,c
+   756  001DE2  EFC9  F00E         	goto	l1324
+   757  001DE6  0A03               	xorlw	3	; case 2
+   758  001DE8  B4D8               	btfsc	status,2,c
+   759  001DEA  EFCE  F00E         	goto	l1326
+   760  001DEE  0A01               	xorlw	1	; case 3
+   761  001DF0  B4D8               	btfsc	status,2,c
+   762  001DF2  EFD2  F00E         	goto	l1328
+   763  001DF6  0A07               	xorlw	7	; case 4
+   764  001DF8  B4D8               	btfsc	status,2,c
+   765  001DFA  EFD7  F00E         	goto	l1330
+   766  001DFE  EF01  F00F         	goto	l1336
+   767  001E02                     l1336:
+   768                           
+   769                           ;DIO.c: 35:   first_powerup_init++;
+   770  001E02  2A2F               	incf	DIO_init@first_powerup_init^0,f,c
+   771  001E04                     l1338:
+   772                           
+   773                           ;DIO.c: 37: if((DIO_info -> port)== 0)
+   774  001E04  C001  FFD9         	movff	DIO_init@DIO_info,fsr2l
+   775  001E08  C002  FFDA         	movff	DIO_init@DIO_info+1,fsr2h
+   776  001E0C  50DF               	movf	indf2,w,c
+   777  001E0E  A4D8               	btfss	status,2,c
+   778  001E10  EF0C  F00F         	goto	u191
+   779  001E14  EF0E  F00F         	goto	u190
+   780  001E18                     u191:
+   781  001E18  EF16  F00F         	goto	l1342
+   782  001E1C                     u190:
+   783  001E1C                     
+   784                           ;DIO.c: 38:  ADCON1 |=( DIO_info -> operation_mode) ;
+   785  001E1C  EE20 F003          	lfsr	2,3
+   786  001E20  5001               	movf	DIO_init@DIO_info^0,w,c
+   787  001E22  26D9               	addwf	fsr2l,f,c
+   788  001E24  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   789  001E26  22DA               	addwfc	fsr2h,f,c
+   790  001E28  50DF               	movf	indf2,w,c
+   791  001E2A  12C1               	iorwf	193,f,c	;volatile
+   792  001E2C                     l1342:
+   793                           
+   794                           ;DIO.c: 39: if(DIO_info != '\0'){
+   795  001E2C  5001               	movf	DIO_init@DIO_info^0,w,c
+   796  001E2E  1002               	iorwf	(DIO_init@DIO_info+1)^0,w,c
+   797  001E30  B4D8               	btfsc	status,2,c
+   798  001E32  EF1D  F00F         	goto	u201
+   799  001E36  EF1F  F00F         	goto	u200
+   800  001E3A                     u201:
+   801  001E3A  EFFD  F00F         	goto	l1384
+   802  001E3E                     u200:
+   803  001E3E  EFE2  F00F         	goto	l1382
+   804  001E42                     l1346:
+   805                           
+   806                           ;DIO.c: 48:            PORTA |=(DIO_info-> pin) ;
+   807  001E42  EE20 F002          	lfsr	2,2
+   808  001E46  5001               	movf	DIO_init@DIO_info^0,w,c
+   809  001E48  26D9               	addwf	fsr2l,f,c
+   810  001E4A  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   811  001E4C  22DA               	addwfc	fsr2h,f,c
+   812  001E4E  50DF               	movf	indf2,w,c
+   813  001E50  1280               	iorwf	128,f,c	;volatile
+   814                           
+   815                           ;DIO.c: 49:             break;
+   816  001E52  EFFF  F00F         	goto	l138
+   817  001E56                     l1348:
+   818                           
+   819                           ;DIO.c: 52:                 *((reg_type8_t)(0x0086)) |=(DIO_info->pin) ;
+   820  001E56  EE20 F002          	lfsr	2,2
+   821  001E5A  5001               	movf	DIO_init@DIO_info^0,w,c
+   822  001E5C  26D9               	addwf	fsr2l,f,c
+   823  001E5E  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   824  001E60  22DA               	addwfc	fsr2h,f,c
+   825  001E62  50DF               	movf	indf2,w,c
+   826  001E64  0100               	movlb	0	; () banked
+   827  001E66  1386               	iorwf	134,f,b	;volatile
+   828                           
+   829                           ;DIO.c: 53:             break;
+   830  001E68  EFFF  F00F         	goto	l138
+   831  001E6C                     l1350:
+   832                           
+   833                           ;DIO.c: 56:                 *((reg_type8_t)(0x0F94)) |=(DIO_info->pin) ;
+   834  001E6C  EE20 F002          	lfsr	2,2
+   835  001E70  5001               	movf	DIO_init@DIO_info^0,w,c
+   836  001E72  26D9               	addwf	fsr2l,f,c
+   837  001E74  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   838  001E76  22DA               	addwfc	fsr2h,f,c
+   839  001E78  50DF               	movf	indf2,w,c
+   840  001E7A  1294               	iorwf	148,f,c	;volatile
+   841                           
+   842                           ;DIO.c: 57:             break;
+   843  001E7C  EFFF  F00F         	goto	l138
+   844  001E80                     l1352:
+   845                           
+   846                           ;DIO.c: 60:                 *((reg_type8_t)(0x0088)) |=(DIO_info->pin) ;
+   847  001E80  EE20 F002          	lfsr	2,2
+   848  001E84  5001               	movf	DIO_init@DIO_info^0,w,c
+   849  001E86  26D9               	addwf	fsr2l,f,c
+   850  001E88  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   851  001E8A  22DA               	addwfc	fsr2h,f,c
+   852  001E8C  50DF               	movf	indf2,w,c
+   853  001E8E  0100               	movlb	0	; () banked
+   854  001E90  1388               	iorwf	136,f,b	;volatile
+   855                           
+   856                           ;DIO.c: 61:             break;
+   857  001E92  EFFF  F00F         	goto	l138
+   858  001E96                     l1354:
+   859                           
+   860                           ;DIO.c: 64:             *((reg_type8_t)(0x0089)) |=(DIO_info->pin) ;
+   861  001E96  EE20 F002          	lfsr	2,2
+   862  001E9A  5001               	movf	DIO_init@DIO_info^0,w,c
+   863  001E9C  26D9               	addwf	fsr2l,f,c
+   864  001E9E  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   865  001EA0  22DA               	addwfc	fsr2h,f,c
+   866  001EA2  50DF               	movf	indf2,w,c
+   867  001EA4  0100               	movlb	0	; () banked
+   868  001EA6  1389               	iorwf	137,f,b	;volatile
+   869                           
+   870                           ;DIO.c: 65:             break;
+   871  001EA8  EFFF  F00F         	goto	l138
+   872  001EAC                     l1356:
+   873                           
+   874                           ;DIO.c: 67:             ret_error += 1 +14;
+   875  001EAC  0E0F               	movlw	15
+   876  001EAE  2605               	addwf	DIO_init@ret_error^0,f,c
+   877                           
+   878                           ;DIO.c: 68:             break;
+   879  001EB0  EFFF  F00F         	goto	l138
+   880  001EB4                     l1360:
+   881  001EB4  C001  FFD9         	movff	DIO_init@DIO_info,fsr2l
+   882  001EB8  C002  FFDA         	movff	DIO_init@DIO_info+1,fsr2h
+   883  001EBC  50DF               	movf	indf2,w,c
+   884  001EBE  6E03               	movwf	??_DIO_init^0,c
+   885  001EC0  6A04               	clrf	(??_DIO_init+1)^0,c
+   886                           
+   887                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   888                           ; Switch size 1, requested type "simple"
+   889                           ; Number of cases is 1, Range of values is 0 to 0
+   890                           ; switch strategies available:
+   891                           ; Name         Instructions Cycles
+   892                           ; simple_byte            4     3 (average)
+   893                           ;	Chosen strategy is simple_byte
+   894  001EC2  5004               	movf	(??_DIO_init+1)^0,w,c
+   895  001EC4  0A00               	xorlw	0	; case 0
+   896  001EC6  B4D8               	btfsc	status,2,c
+   897  001EC8  EF68  F00F         	goto	l1528
+   898  001ECC  EF56  F00F         	goto	l1356
+   899  001ED0                     l1528:
+   900                           
+   901                           ; Switch size 1, requested type "simple"
+   902                           ; Number of cases is 5, Range of values is 0 to 4
+   903                           ; switch strategies available:
+   904                           ; Name         Instructions Cycles
+   905                           ; simple_byte           16     9 (average)
+   906                           ;	Chosen strategy is simple_byte
+   907  001ED0  5003               	movf	??_DIO_init^0,w,c
+   908  001ED2  0A00               	xorlw	0	; case 0
+   909  001ED4  B4D8               	btfsc	status,2,c
+   910  001ED6  EF21  F00F         	goto	l1346
+   911  001EDA  0A01               	xorlw	1	; case 1
+   912  001EDC  B4D8               	btfsc	status,2,c
+   913  001EDE  EF2B  F00F         	goto	l1348
+   914  001EE2  0A03               	xorlw	3	; case 2
+   915  001EE4  B4D8               	btfsc	status,2,c
+   916  001EE6  EF36  F00F         	goto	l1350
+   917  001EEA  0A01               	xorlw	1	; case 3
+   918  001EEC  B4D8               	btfsc	status,2,c
+   919  001EEE  EF40  F00F         	goto	l1352
+   920  001EF2  0A07               	xorlw	7	; case 4
+   921  001EF4  B4D8               	btfsc	status,2,c
+   922  001EF6  EF4B  F00F         	goto	l1354
+   923  001EFA  EF56  F00F         	goto	l1356
+   924  001EFE                     l1362:
+   925                           
+   926                           ;DIO.c: 75:         PORTA &=(~(DIO_info->pin)) ;
+   927  001EFE  EE20 F002          	lfsr	2,2
+   928  001F02  5001               	movf	DIO_init@DIO_info^0,w,c
+   929  001F04  26D9               	addwf	fsr2l,f,c
+   930  001F06  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   931  001F08  22DA               	addwfc	fsr2h,f,c
+   932  001F0A  50DF               	movf	indf2,w,c
+   933  001F0C  0AFF               	xorlw	255
+   934  001F0E  1680               	andwf	128,f,c	;volatile
+   935                           
+   936                           ;DIO.c: 76:       break;
+   937  001F10  EFFF  F00F         	goto	l138
+   938  001F14                     l1364:
+   939                           
+   940                           ;DIO.c: 78:         *((reg_type8_t)(0x0086)) &=(~(DIO_info->pin)) ;
+   941  001F14  EE20 F002          	lfsr	2,2
+   942  001F18  5001               	movf	DIO_init@DIO_info^0,w,c
+   943  001F1A  26D9               	addwf	fsr2l,f,c
+   944  001F1C  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   945  001F1E  22DA               	addwfc	fsr2h,f,c
+   946  001F20  50DF               	movf	indf2,w,c
+   947  001F22  0AFF               	xorlw	255
+   948  001F24  0100               	movlb	0	; () banked
+   949  001F26  1786               	andwf	134,f,b	;volatile
+   950                           
+   951                           ;DIO.c: 79:       break;
+   952  001F28  EFFF  F00F         	goto	l138
+   953  001F2C                     l1366:
+   954                           
+   955                           ;DIO.c: 81:         *((reg_type8_t)(0x0F94)) &=(~(DIO_info->pin)) ;
+   956  001F2C  EE20 F002          	lfsr	2,2
+   957  001F30  5001               	movf	DIO_init@DIO_info^0,w,c
+   958  001F32  26D9               	addwf	fsr2l,f,c
+   959  001F34  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   960  001F36  22DA               	addwfc	fsr2h,f,c
+   961  001F38  50DF               	movf	indf2,w,c
+   962  001F3A  0AFF               	xorlw	255
+   963  001F3C  1694               	andwf	148,f,c	;volatile
+   964                           
+   965                           ;DIO.c: 82:       break;
+   966  001F3E  EFFF  F00F         	goto	l138
+   967  001F42                     l1368:
+   968                           
+   969                           ;DIO.c: 84:         *((reg_type8_t)(0x0088)) &=(~(DIO_info->pin)) ;
+   970  001F42  EE20 F002          	lfsr	2,2
+   971  001F46  5001               	movf	DIO_init@DIO_info^0,w,c
+   972  001F48  26D9               	addwf	fsr2l,f,c
+   973  001F4A  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   974  001F4C  22DA               	addwfc	fsr2h,f,c
+   975  001F4E  50DF               	movf	indf2,w,c
+   976  001F50  0AFF               	xorlw	255
+   977  001F52  0100               	movlb	0	; () banked
+   978  001F54  1788               	andwf	136,f,b	;volatile
+   979                           
+   980                           ;DIO.c: 85:       break;
+   981  001F56  EFFF  F00F         	goto	l138
+   982  001F5A                     l1370:
+   983                           
+   984                           ;DIO.c: 87:         *((reg_type8_t)(0x0089)) &=(~(DIO_info->pin)) ;
+   985  001F5A  EE20 F002          	lfsr	2,2
+   986  001F5E  5001               	movf	DIO_init@DIO_info^0,w,c
+   987  001F60  26D9               	addwf	fsr2l,f,c
+   988  001F62  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+   989  001F64  22DA               	addwfc	fsr2h,f,c
+   990  001F66  50DF               	movf	indf2,w,c
+   991  001F68  0AFF               	xorlw	255
+   992  001F6A  0100               	movlb	0	; () banked
+   993  001F6C  1789               	andwf	137,f,b	;volatile
+   994                           
+   995                           ;DIO.c: 88:       break;
+   996  001F6E  EFFF  F00F         	goto	l138
+   997  001F72                     l1376:
+   998  001F72  C001  FFD9         	movff	DIO_init@DIO_info,fsr2l
+   999  001F76  C002  FFDA         	movff	DIO_init@DIO_info+1,fsr2h
+  1000  001F7A  50DF               	movf	indf2,w,c
+  1001  001F7C  6E03               	movwf	??_DIO_init^0,c
+  1002  001F7E  6A04               	clrf	(??_DIO_init+1)^0,c
+  1003                           
+  1004                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1005                           ; Switch size 1, requested type "simple"
+  1006                           ; Number of cases is 1, Range of values is 0 to 0
+  1007                           ; switch strategies available:
+  1008                           ; Name         Instructions Cycles
+  1009                           ; simple_byte            4     3 (average)
+  1010                           ;	Chosen strategy is simple_byte
+  1011  001F80  5004               	movf	(??_DIO_init+1)^0,w,c
+  1012  001F82  0A00               	xorlw	0	; case 0
+  1013  001F84  B4D8               	btfsc	status,2,c
+  1014  001F86  EFC7  F00F         	goto	l1530
+  1015  001F8A  EF56  F00F         	goto	l1356
+  1016  001F8E                     l1530:
+  1017                           
+  1018                           ; Switch size 1, requested type "simple"
+  1019                           ; Number of cases is 5, Range of values is 0 to 4
+  1020                           ; switch strategies available:
+  1021                           ; Name         Instructions Cycles
+  1022                           ; simple_byte           16     9 (average)
+  1023                           ;	Chosen strategy is simple_byte
+  1024  001F8E  5003               	movf	??_DIO_init^0,w,c
+  1025  001F90  0A00               	xorlw	0	; case 0
+  1026  001F92  B4D8               	btfsc	status,2,c
+  1027  001F94  EF7F  F00F         	goto	l1362
+  1028  001F98  0A01               	xorlw	1	; case 1
+  1029  001F9A  B4D8               	btfsc	status,2,c
+  1030  001F9C  EF8A  F00F         	goto	l1364
+  1031  001FA0  0A03               	xorlw	3	; case 2
+  1032  001FA2  B4D8               	btfsc	status,2,c
+  1033  001FA4  EF96  F00F         	goto	l1366
+  1034  001FA8  0A01               	xorlw	1	; case 3
+  1035  001FAA  B4D8               	btfsc	status,2,c
+  1036  001FAC  EFA1  F00F         	goto	l1368
+  1037  001FB0  0A07               	xorlw	7	; case 4
+  1038  001FB2  B4D8               	btfsc	status,2,c
+  1039  001FB4  EFAD  F00F         	goto	l1370
+  1040  001FB8  EF56  F00F         	goto	l1356
+  1041  001FBC                     l1378:
+  1042                           
+  1043                           ;DIO.c: 95: ret_error +=1 + 18;
+  1044  001FBC  0E13               	movlw	19
+  1045  001FBE  2605               	addwf	DIO_init@ret_error^0,f,c
+  1046                           
+  1047                           ;DIO.c: 96: break;
+  1048  001FC0  EFFF  F00F         	goto	l138
+  1049  001FC4                     l1382:
+  1050  001FC4  EE20 F001          	lfsr	2,1
+  1051  001FC8  5001               	movf	DIO_init@DIO_info^0,w,c
+  1052  001FCA  26D9               	addwf	fsr2l,f,c
+  1053  001FCC  5002               	movf	(DIO_init@DIO_info+1)^0,w,c
+  1054  001FCE  22DA               	addwfc	fsr2h,f,c
+  1055  001FD0  50DF               	movf	indf2,w,c
+  1056  001FD2  6E03               	movwf	??_DIO_init^0,c
+  1057  001FD4  6A04               	clrf	(??_DIO_init+1)^0,c
+  1058                           
+  1059                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1060                           ; Switch size 1, requested type "simple"
+  1061                           ; Number of cases is 1, Range of values is 0 to 0
+  1062                           ; switch strategies available:
+  1063                           ; Name         Instructions Cycles
+  1064                           ; simple_byte            4     3 (average)
+  1065                           ;	Chosen strategy is simple_byte
+  1066  001FD6  5004               	movf	(??_DIO_init+1)^0,w,c
+  1067  001FD8  0A00               	xorlw	0	; case 0
+  1068  001FDA  B4D8               	btfsc	status,2,c
+  1069  001FDC  EFF2  F00F         	goto	l1532
+  1070  001FE0  EFDE  F00F         	goto	l1378
+  1071  001FE4                     l1532:
+  1072                           
+  1073                           ; Switch size 1, requested type "simple"
+  1074                           ; Number of cases is 2, Range of values is 0 to 255
+  1075                           ; switch strategies available:
+  1076                           ; Name         Instructions Cycles
+  1077                           ; simple_byte            7     4 (average)
+  1078                           ;	Chosen strategy is simple_byte
+  1079  001FE4  5003               	movf	??_DIO_init^0,w,c
+  1080  001FE6  0A00               	xorlw	0	; case 0
+  1081  001FE8  B4D8               	btfsc	status,2,c
+  1082  001FEA  EF5A  F00F         	goto	l1360
+  1083  001FEE  0AFF               	xorlw	255	; case 255
+  1084  001FF0  B4D8               	btfsc	status,2,c
+  1085  001FF2  EFB9  F00F         	goto	l1376
+  1086  001FF6  EFDE  F00F         	goto	l1378
+  1087  001FFA                     l1384:
+  1088                           
+  1089                           ;DIO.c: 99: {;DIO.c: 100: ret_error +=1 +16;
+  1090  001FFA  0E11               	movlw	17
+  1091  001FFC  2605               	addwf	DIO_init@ret_error^0,f,c
+  1092  001FFE                     l138:
+  1093  001FFE  0012               	return		;funcret
+  1094  002000                     __end_of_DIO_init:
+  1095                           	callstack 0
+  1096  0000                     
+  1097                           	psect	rparam
+  1098  0000                     
+  1099                           	psect	idloc
+  1100                           
+  1101                           ;Config register IDLOC0 @ 0x200000
+  1102                           ;	unspecified, using default values
+  1103  200000                     	org	2097152
+  1104  200000  FF                 	db	255
+  1105                           
+  1106                           ;Config register IDLOC1 @ 0x200001
+  1107                           ;	unspecified, using default values
+  1108  200001                     	org	2097153
+  1109  200001  FF                 	db	255
+  1110                           
+  1111                           ;Config register IDLOC2 @ 0x200002
+  1112                           ;	unspecified, using default values
+  1113  200002                     	org	2097154
+  1114  200002  FF                 	db	255
+  1115                           
+  1116                           ;Config register IDLOC3 @ 0x200003
+  1117                           ;	unspecified, using default values
+  1118  200003                     	org	2097155
+  1119  200003  FF                 	db	255
+  1120                           
+  1121                           ;Config register IDLOC4 @ 0x200004
+  1122                           ;	unspecified, using default values
+  1123  200004                     	org	2097156
+  1124  200004  FF                 	db	255
+  1125                           
+  1126                           ;Config register IDLOC5 @ 0x200005
+  1127                           ;	unspecified, using default values
+  1128  200005                     	org	2097157
+  1129  200005  FF                 	db	255
+  1130                           
+  1131                           ;Config register IDLOC6 @ 0x200006
+  1132                           ;	unspecified, using default values
+  1133  200006                     	org	2097158
+  1134  200006  FF                 	db	255
+  1135                           
+  1136                           ;Config register IDLOC7 @ 0x200007
+  1137                           ;	unspecified, using default values
+  1138  200007                     	org	2097159
+  1139  200007  FF                 	db	255
+  1140                           
+  1141                           	psect	config
+  1142                           
+  1143                           ; Padding undefined space
+  1144  300000                     	org	3145728
+  1145  300000  FF                 	db	255
+  1146                           
+  1147                           ;Config register CONFIG1H @ 0x300001
+  1148                           ;	unspecified, using default values
+  1149                           ;	Oscillator Selection bits
+  1150                           ;	FOSC = 0x5, unprogrammed default
+  1151                           ;	4X PLL Enable
+  1152                           ;	PLLCFG = 0x0, unprogrammed default
+  1153                           ;	Primary clock enable bit
+  1154                           ;	PRICLKEN = 0x1, unprogrammed default
+  1155                           ;	Fail-Safe Clock Monitor Enable bit
+  1156                           ;	FCMEN = 0x0, unprogrammed default
+  1157                           ;	Internal/External Oscillator Switchover bit
+  1158                           ;	IESO = 0x0, unprogrammed default
+  1159  300001                     	org	3145729
+  1160  300001  25                 	db	37
+  1161                           
+  1162                           ;Config register CONFIG2L @ 0x300002
+  1163                           ;	unspecified, using default values
+  1164                           ;	Power-up Timer Enable bit
+  1165                           ;	PWRTEN = 0x1, unprogrammed default
+  1166                           ;	Brown-out Reset Enable bits
+  1167                           ;	BOREN = 0x3, unprogrammed default
+  1168                           ;	Brown Out Reset Voltage bits
+  1169                           ;	BORV = 0x3, unprogrammed default
+  1170  300002                     	org	3145730
+  1171  300002  1F                 	db	31
+  1172                           
+  1173                           ;Config register CONFIG2H @ 0x300003
+  1174                           ;	unspecified, using default values
+  1175                           ;	Watchdog Timer Enable bits
+  1176                           ;	WDTEN = 0x3, unprogrammed default
+  1177                           ;	Watchdog Timer Postscale Select bits
+  1178                           ;	WDTPS = 0xF, unprogrammed default
+  1179  300003                     	org	3145731
+  1180  300003  3F                 	db	63
+  1181                           
+  1182                           ; Padding undefined space
+  1183  300004                     	org	3145732
+  1184  300004  FF                 	db	255
+  1185                           
+  1186                           ;Config register CONFIG3H @ 0x300005
+  1187                           ;	unspecified, using default values
+  1188                           ;	CCP2 MUX bit
+  1189                           ;	CCP2MX = 0x1, unprogrammed default
+  1190                           ;	PORTB A/D Enable bit
+  1191                           ;	PBADEN = 0x1, unprogrammed default
+  1192                           ;	P3A/CCP3 Mux bit
+  1193                           ;	CCP3MX = 0x1, unprogrammed default
+  1194                           ;	HFINTOSC Fast Start-up
+  1195                           ;	HFOFST = 0x1, unprogrammed default
+  1196                           ;	Timer3 Clock input mux bit
+  1197                           ;	T3CMX = 0x1, unprogrammed default
+  1198                           ;	ECCP2 B output mux bit
+  1199                           ;	P2BMX = 0x1, unprogrammed default
+  1200                           ;	MCLR Pin Enable bit
+  1201                           ;	MCLRE = 0x1, unprogrammed default
+  1202  300005                     	org	3145733
+  1203  300005  BF                 	db	191
+  1204                           
+  1205                           ;Config register CONFIG4L @ 0x300006
+  1206                           ;	unspecified, using default values
+  1207                           ;	Stack Full/Underflow Reset Enable bit
+  1208                           ;	STVREN = 0x1, unprogrammed default
+  1209                           ;	Single-Supply ICSP Enable bit
+  1210                           ;	LVP = 0x1, unprogrammed default
+  1211                           ;	Extended Instruction Set Enable bit
+  1212                           ;	XINST = 0x0, unprogrammed default
+  1213                           ;	Background Debug
+  1214                           ;	DEBUG = 0x1, unprogrammed default
+  1215  300006                     	org	3145734
+  1216  300006  85                 	db	133
+  1217                           
+  1218                           ; Padding undefined space
+  1219  300007                     	org	3145735
+  1220  300007  FF                 	db	255
+  1221                           
+  1222                           ;Config register CONFIG5L @ 0x300008
+  1223                           ;	unspecified, using default values
+  1224                           ;	Code Protection Block 0
+  1225                           ;	CP0 = 0x1, unprogrammed default
+  1226                           ;	Code Protection Block 1
+  1227                           ;	CP1 = 0x1, unprogrammed default
+  1228  300008                     	org	3145736
+  1229  300008  03                 	db	3
+  1230                           
+  1231                           ;Config register CONFIG5H @ 0x300009
+  1232                           ;	unspecified, using default values
+  1233                           ;	Boot Block Code Protection bit
+  1234                           ;	CPB = 0x1, unprogrammed default
+  1235                           ;	Data EEPROM Code Protection bit
+  1236                           ;	CPD = 0x1, unprogrammed default
+  1237  300009                     	org	3145737
+  1238  300009  C0                 	db	192
+  1239                           
+  1240                           ;Config register CONFIG6L @ 0x30000A
+  1241                           ;	unspecified, using default values
+  1242                           ;	Write Protection Block 0
+  1243                           ;	WRT0 = 0x1, unprogrammed default
+  1244                           ;	Write Protection Block 1
+  1245                           ;	WRT1 = 0x1, unprogramm  1246  30000A                     	org	3145738
+  1247  30000A  03                 	db	3
+  1248                           
+  1249                           ;Config register CONFIG6H @ 0x30000B
+  1250                           ;	unspecified, using default values
+  1251                           ;	Configuration Register Write Protection bit
+  1252                           ;	WRTC = 0x1, unprogrammed default
+  1253                           ;	Boot Block Write Protection bit
+  1254                           ;	WRTB = 0x1, unprogrammed default
+  1255                           ;	Data EEPROM Write Protection bit
+  1256                           ;	WRTD = 0x1, unprogrammed default
+  1257  30000B                     	org	3145739
+  1258  30000B  E0                 	db	224
+  1259                           
+  1260                           ;Config register CONFIG7L @ 0x30000C
+  1261                           ;	unspecified, using default values
+  1262                           ;	Table Read Protection Block 0
+  1263                           ;	EBTR0 = 0x1, unprogrammed default
+  1264                           ;	Table Read Protection Block 1
+  1265                           ;	EBTR1 = 0x1, unprogrammed default
+  1266  30000C                     	org	3145740
+  1267  30000C  03                 	db	3
+  1268                           
+  1269                           ;Config register CONFIG7H @ 0x30000D
+  1270                           ;	unspecified, using default values
+  1271                           ;	Boot Block Table Read Protection bit
+  1272                           ;	EBTRB = 0x1, unprogrammed default
+  1273  30000D                     	org	3145741
+  1274  30000D  40                 	db	64
+  1275                           tosu	equ	0xFFF
+  1276                           tosh	equ	0xFFE
+  1277                           tosl	equ	0xFFD
+  1278                           stkptr	equ	0xFFC
+  1279                           pclatu	equ	0xFFB
+  1280                           pclath	equ	0xFFA
+  1281                           pcl	equ	0xFF9
+  1282                           tblptru	equ	0xFF8
+  1283                           tblptrh	equ	0xFF7
+  1284                           tblptrl	equ	0xFF6
+  1285                           tablat	equ	0xFF5
+  1286                           prodh	equ	0xFF4
+  1287                           prodl	equ	0xFF3
+  1288                           indf0	equ	0xFEF
+  1289                           postinc0	equ	0xFEE
+  1290                           postdec0	equ	0xFED
+  1291                           preinc0	equ	0xFEC
+  1292                           plusw0	equ	0xFEB
+  1293                           fsr0h	equ	0xFEA
+  1294                           fsr0l	equ	0xFE9
+  1295                           wreg	equ	0xFE8
+  1296                           indf1	equ	0xFE7
+  1297                           postinc1	equ	0xFE6
+  1298                           postdec1	equ	0xFE5
+  1299                           preinc1	equ	0xFE4
+  1300                           plusw1	equ	0xFE3
+  1301                           fsr1h	equ	0xFE2
+  1302                           fsr1l	equ	0xFE1
+  1303                           bsr	equ	0xFE0
+  1304                           indf2	equ	0xFDF
+  1305                           postinc2	equ	0xFDE
+  1306                           postdec2	equ	0xFDD
+  1307                           preinc2	equ	0xFDC
+  1308                           plusw2	equ	0xFDB
+  1309                           fsr2h	equ	0xFDA
+  1310                           fsr2l	equ	0xFD9
+  1311                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        20
+    BSS         6
+    Persistent  1
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     22      49
+    BANK0           160      0       0
+    BANK1           256      0       0
+
+Pointer List with Targets:
+
+    DIO_init@DIO_info	PTR struct DIO_Cfg_s size(2) Largest target is 4
+		 -> Dio_configutation_C(COMRAM[4]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_I2C_Master_Init
+    _I2C_Master_Write->_I2C_Master_Wait
+    _I2C_Master_Init->___lldiv
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     965
+                                             21 COMRAM     1     1      0
+                    _I2C_Master_Init
+                   _I2C_Master_Write
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Master_Write                                     1     1      0      15
+                                              1 COMRAM     1     1      0
+                    _I2C_Master_Wait
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Master_Wait                                      1     1      0       0
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Master_Init                                      8     4      4     949
+                                             13 COMRAM     8     4      4
+                           _DIO_init
+                            ___lldiv
+ ---------------------------------------------------------------------------------
+ (2) ___lldiv                                             13     5      8     314
+                                              0 COMRAM    13     5      8
+ ---------------------------------------------------------------------------------
+ (2) _DIO_init                                             5     3      2     461
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _I2C_Master_Init
+     _DIO_init
+     ___lldiv
+   _I2C_Master_Write
+     _I2C_Master_Wait
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             1FF      0       0       8        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       5        0.0%
+BITBANK0            A0      0       0       3        0.0%
+BANK0               A0      0       0       4        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     16      31       1       51.6%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      31       6        0.0%
+DATA                 0      0      31       9        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.31 build 20201012212115 
+Symbol Table                                                                                   Wed Nov 24 20:05:04 2021
+
+                        l23 1CC8                          l41 1BF0                          l26 1C0A  
+                        l43 1BFE                          l44 1C08                          l29 1C2E  
+                        u40 1C18                          u41 1C14                          u50 1C2E  
+                        u51 1C2A                         l215 1BDE                         l216 1BDE  
+                       l138 1FFE                         l255 1D6C                         l248 1D5C  
+                       l980 1C0A                         l982 1C18                         u110 1BFE  
+                       u111 1BFA                         u200 1E3E                         u201 1E3A  
+                       u210 1CF0                         u211 1CEC                         u220 1D12  
+                       u221 1D0E                         u230 1D3A                         u231 1D36  
+                       u180 1D86                         u181 1D82                         u245 1C90  
+                       u190 1E1C                         u191 1E18                         wreg 000FE8  
+                      l1042 1BE8                        l1044 1BEC                        l1046 1C00  
+                      l1330 1DAE                        l1322 1D8A                        l1410 1CF8  
+                      l1340 1E1C                        l1324 1D92                        l1420 1D4A  
+                      l1412 1D04                        l1404 1CCA                        l1350 1E6C  
+                      l1342 1E2C                        l1326 1D9C                        l1334 1DB8  
+                      l1318 1D6E                        l1422 1D4C                        l1414 1D12  
+                      l1406 1CDA                        l1430 1CB8                        l1360 1EB4  
+                      l1352 1E80                        l1328 1DA4                        l1336 1E02  
+                      l1424 1D56                        l1416 1D1C                        l1408 1CF0  
+                      l1432 1CBC                        l1530 1F8E                        l1370 1F5A  
+                      l1362 1EFE                        l1354 1E96                        l1346 1E42  
+                      l1338 1E04                        l1418 1D3A                        l1426 1C66  
+                      l1442 1BC4                        l1532 1FE4                        l1364 1F14  
+                      l1356 1EAC                        l1348 1E56                        l1428 1C6E  
+                      l1444 1BD8                        l1366 1F2C                        l1382 1FC4  
+                      l1526 1DD4                        l1376 1F72                        l1368 1F42  
+                      l1528 1ED0                        l1384 1FFA                        l1378 1FBC  
+                      _main 1BC4                        fsr2h 000FDA                        indf2 000FDF  
+                      fsr1l 000FE1                        fsr2l 000FD9                        start 0000  
+              ___param_bank 000000            __end_of_DIO_init 2000            ?_I2C_Master_Init 000E  
+          ?_I2C_Master_Wait 0001                       ?_main 0001             __end_of___lldiv 1D6E  
+                     _RCEN1 007E2B                       _PORTA 000F80                       _TRISA 000F92  
+                     _SSPIF 007CF3                       tablat 000FF5                       status 000FD8  
+           __initialization 1C30                __end_of_main 1BE6                      ??_main 0016  
+             __activetblptr 000002           ?_I2C_Master_Write 0001                      _ADCON1 000FC1  
+        ??_I2C_Master_Write 0002                      _SSPBUF 000FC9      DIO_Write@first_powerup 002E  
+                 ??___lldiv 0009                __pdataCOMRAM 0016                      tblptrh 000FF7  
+                    tblptrl 000FF6                      tblptru 000FF8                  __accesstop 0060  
+   __end_of__initialization 1C5C                   ?_DIO_init 0001               ___rparam_used 000001  
+            __pcstackCOMRAM 0001                  ??_DIO_init 0003                  __pnvCOMRAM 0030  
+                   _SSP1ADD 000FC8                     _SSP1BUF 000FC9  DIO_init@first_powerup_init 002F  
+                   __Hparam 0000                     __Lparam 0000                     ___lldiv 1CCA  
+                   __pcinit 1C30                     __ramtop 0200                     __ptext0 1BC4  
+                   __ptext1 1BE6                     __ptext2 1C0A                     __ptext3 1C66  
+                   __ptext4 1CCA                     __ptext5 1D6E                     _is_init 0030  
+  __size_of_I2C_Master_Init 0064    __size_of_I2C_Master_Wait 0026        end_of_initialization 1C5C  
+             __Lmediumconst 0000   __size_of_I2C_Master_Write 0024             ___lldiv@divisor 0005  
+           ___lldiv@counter 000D                     postdec1 000FE5                     postinc0 000FEE  
+ _Dio_configutation_A_7_seg 001E           __size_of_DIO_init 0292               __pidataCOMRAM 1BB0  
+       start_initialization 1C30           ??_I2C_Master_Init 0012           ??_I2C_Master_Wait 0001  
+         DIO_init@ret_error 0005         _Dio_configutation_B 001A         _Dio_configutation_C 0026  
+       _Dio_configutation_D 0016         _Dio_configutation_E 002A                 __pbssCOMRAM 002A  
+          DIO_init@DIO_info 0001            _I2C_Master_Write 1BE6                    ?___lldiv 0001  
+      I2C_Master_Write@data 0002                    _DIO_init 1D6E     _Dio_configutation_A_ADC 0022  
+                  _SSP1CON1 000FC6                    _SSP1CON2 000FC5                    _SSP1STAT 000FC7  
+       I2C_Master_Init@baud 000E                   copy_data0 1C44                    __Hrparam 0000  
+                  __Lrparam 0000            __size_of___lldiv 00A4             _I2C_Master_Init 1C66  
+           _I2C_Master_Wait 1C0A               __size_of_main 0022    __end_of_I2C_Master_Write 1C0A  
+          ___lldiv@dividend 0001     __end_of_I2C_Master_Init 1CCA     __end_of_I2C_Master_Wait 1C30  
+          ___lldiv@quotient 0009  

@@ -9115,7 +9115,51 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\\pic\\include\\xc.h" 2 3
 # 9 "newmain.c" 2
 
+# 1 "./i2c_EEPROM.h" 1
+# 10 "./i2c_EEPROM.h"
+# 1 "./registers.h" 1
+# 11 "./registers.h"
+# 1 "./std_types.h" 1
+# 16 "./std_types.h"
+typedef unsigned char uint8_t;
+typedef unsigned int uint16_t;
+typedef unsigned long int uint32_t;
+typedef unsigned long long uint64_t;
+typedef signed char sint8_t;
+typedef signed int sint16_t;
+typedef signed long int sint32_t;
+typedef signed long long sint64_t;
+typedef volatile uint8_t* const reg_type8_t;
+typedef volatile uint16_t* const reg_type16_t;
+# 11 "./registers.h" 2
+# 10 "./i2c_EEPROM.h" 2
+
+
+
+void I2C_Master_Init(const unsigned long baud);
+void I2C_Master_Wait();
+void I2C_Master_Start();
+void I2C_Master_RepeatedStart();
+void I2C_Master_Stop();
+void I2C_ACK();
+void I2C_NACK();
+unsigned char I2C_Master_Write(unsigned char);
+unsigned char I2C_Read_Byte(void);
+
+void EEPROM_Write(unsigned int add, unsigned char data);
+void EEPROM_Write_Page(unsigned int add, unsigned char* data, unsigned char len);
+unsigned char EEPROM_Read(unsigned int add);
+void EEPROM_Read_Page(unsigned int add, unsigned char* data, unsigned int len);
+# 10 "newmain.c" 2
 
 void main(void) {
+    I2C_Master_Init(10000);
+
+    while (1){
+
+
+
+
+    }
     return;
 }

@@ -7,11 +7,11 @@
 
 #ifndef REGISTERS_H
 #define	REGISTERS_H
-#include "pic18f23k22.h"
+#include <pic18f23k22.h>
 #include "std_types.h"
 /********************************************************************/
-#define PORTA_DATA *((reg_type8_t)(0x0005))
-#define PORTA_DIR   *((reg_type8_t)(0x0085))
+#define PORTA_DATA TRISA
+#define PORTA_DIR  PORTA
 /*1Fh ADCON0 ADCS1 ADCS0 CHS2 CHS1 CHS0 GO/DONE —ADON0000 00-0 127, 150*/
 #define ADCON0   ADCON0
 #define ADON            0x01
@@ -25,8 +25,8 @@
 #define PORTB_DATA *((reg_type8_t)(0x0006))
 #define PORTB_DIR   *((reg_type8_t)(0x0086))
 /********************************************************************/
-#define PORTC_DATA *((reg_type8_t)(0x0007))
-#define PORTC_DIR   *((reg_type8_t)(0x0087))
+#define PORTC_DATA *((reg_type8_t)(0x0F82))
+#define PORTC_DIR   *((reg_type8_t)(0x0F94))
 /********************************************************************/
 #define PORTD_DATA  *((reg_type8_t)(0x0008))
 #define PORTD_DIR   *((reg_type8_t)(0x0088))

@@ -1,9 +1,10 @@
 #include <xc.h>
 #include "i2c_EEPROM.h"
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 16000000
 #define EEPROM_Address_R 0xA1
 #define EEPROM_Address_W 0xA0
+    
 //---------------[ I2C Routines ]-------------------
 //--------------------------------------------------
 void I2C_Master_Init(const unsigned long baud)
@@ -12,8 +13,8 @@ void I2C_Master_Init(const unsigned long baud)
   SSP1CON2 = 0;
   SSP1ADD = (unsigned char)(_XTAL_FREQ/(4*baud))-1;
   SSP1STAT = 0;
-  TRISC |= 3 ;
-  TRISC |= 4 ;
+ DIO_init (&Dio_configutation_C);
+// DIO_Write(GPIOC,BIT3|BIT4,LOW);
 }
 void I2C_Master_Wait()
 {

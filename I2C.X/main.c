@@ -7,12 +7,11 @@
 
 
 #include <xc.h>
-#include "i2c_EEPROM.h"
+#include "nvm.h"
 void main(void) {
-    
+    nvm_Write('M',0x7f00);
     while (1){
-    
-    
+
     }
     return;
 }

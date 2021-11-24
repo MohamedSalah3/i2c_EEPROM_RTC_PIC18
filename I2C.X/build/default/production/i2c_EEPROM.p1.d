@@ -2,4 +2,7 @@ build/default/production/i2c_EEPROM.p1:  \
 i2c_EEPROM.c  \
 i2c_EEPROM.h  \
 registers.h  \
-std_types.h 
+std_types.h  \
+DIO.h  \
+DIO_Config.h  \
+error.h 
